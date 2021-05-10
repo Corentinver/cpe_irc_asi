@@ -6,7 +6,7 @@
 
 ### Comparaison entre Web Statique + Web Services, Web Dynamique
 
-| Crtière | Web Statique | Web Dynamique
+| Critère | Web Statique | Web Dynamique
 | ------ | ------ | ------ |
 | Généralités | Un site web statique est composé de pages statiques dans le sens où leur contenu n'est pas dynamique. Qu'importe le contexte (utilisateur, OS, navigateur, heure, nombre de visites, etc.) la page sera toujours identique. Elle est donc stockée telle quelle sur le serveur et envoyée au client. | A l'inverse du Web Statique, le Web Dynamique pourra rendre une page différente selon les critères retenus. Une même page (URL) pourra donc donner plusieurs résultats selon ces paramètres. Il ne peut pas savoir à l'avance ce qu'il va renvoyer au client car elle "se contruit" dynamiquement lorsque le client la demande. |
 | Difficulté de dévelopement | Les pages statiques sont très souvent bien plus simples à mettre en place. En effet, le contenu étant identique à tout moment, il suffit de construire et de remplir sa page comme on l'entend sans trop s'embêter. En revanche, ce n'est pas facile à maintenir si l'on doit souvent modifier le contenu des pages. | Plus complexes à mettre en oeuvre, les pages dynamiques sont bien plus adaptées aux contextes changeants (espace client, site de commerce, blogs, etc.) et donc par essence dépendant du contexte. C'est aussi plus résistant au changements car on doit pouvoir facilement les étendre et les maintenir à long terme. |
