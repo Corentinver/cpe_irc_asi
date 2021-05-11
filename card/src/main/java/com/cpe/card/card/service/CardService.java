@@ -8,11 +8,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cpe.card.card.dto.Card;
 import com.cpe.card.card.dto.OwnedCard;
+import com.cpe.card.card.pojo.Card;
 import com.cpe.card.card.repository.CardRepository;
 import com.cpe.card.card.repository.OwnedCardRepository;
 
+import lombok.Data;
+
+@Data
 @Service
 public class CardService {
 
@@ -56,10 +59,10 @@ public class CardService {
 	}
 
 	public Boolean sellCard(OwnedCard ownedCard) {
-		ownedCardRepository.delete(ownedCard);
+		
 	}
 
-	public Boolean buyCard(OwnedCard ownedCard) {
+	public Boolean buyCard(int userId, int cardId) {
 		Boolean returnValue = false;
 		Optional<Card> optionalCard = cardRepository.findById(ownedCard.cardId);
 		if(optionalCard.isPresent()) {
@@ -73,6 +76,11 @@ public class CardService {
 		}
 		
 		return returnValue;
+	}
+
+	public Object sellCard(int userId, int cardId) {
+		ownedCardRepository.delete(ownedCard);
+		return null;
 	}
 
 }

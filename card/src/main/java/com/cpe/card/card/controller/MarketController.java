@@ -18,13 +18,13 @@ public class MarketController {
 	
 	@Autowired CardService cardService;
 
-	@GetMapping("/sellCard/")
-	public ResponseEntity<?> sellCard(@RequestBody OwnedCard ownedCard) {
-		return new ResponseEntity<>(cardService.sellCard(ownedCard), HttpStatus.OK);
+	@GetMapping("/sell/{cardId}/{userId}")
+	public ResponseEntity<?> sellCard(@RequestParam int cardId, @RequestParam int userId) {
+		return new ResponseEntity<>(cardService.sellCard(userId, cardId), HttpStatus.OK);
 	}
 	
-	@GetMapping("/buyCard/{id}")
-	public ResponseEntity<?> buyCard(@RequestBody OwnedCard ownedCard) {
-		return new ResponseEntity<>(cardService.buyCard(ownedCard), HttpStatus.OK);
+	@GetMapping("/buy/{cardId}/{userId}")
+	public ResponseEntity<?> buyCard(@RequestParam int cardId, @RequestParam int userId) {
+		return new ResponseEntity<>(cardService.buyCard(userId, cardId), HttpStatus.OK);
 	}
 }

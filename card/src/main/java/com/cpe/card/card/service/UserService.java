@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.cpe.card.card.dto.User;
 import com.cpe.card.card.dto.UserRegister;
+import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.UserRepository;
 
 @Service

@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.cpe.card.card.dto.User;
+import com.cpe.card.card.pojo.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	

@@ -12,7 +12,7 @@ import com.cpe.card.card.repository.CardRepository;
 import com.cpe.card.card.service.CardService;
 
 @RestController
-@RequestMapping("/card")
+@RequestMapping("/cards")
 public class CardController {
 		
 	@Autowired CardService cardService;

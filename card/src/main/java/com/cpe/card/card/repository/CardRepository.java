@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cpe.card.card.dto.Card;
+import com.cpe.card.card.pojo.Card;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
 
