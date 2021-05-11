@@ -8,17 +8,12 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cpe.card.card.dto.OwnedCard;
 import com.cpe.card.card.pojo.Card;
 import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.CardRepository;
-import com.cpe.card.card.repository.OwnedCardRepository;
 
 @Service
 public class CardService {
-	
-	@Autowired
-	private OwnedCardRepository ownedCardRepository;
 	
 	@Autowired
 	private CardRepository cardRepository;
@@ -56,7 +51,7 @@ public class CardService {
 		
 		return returnValue;
 	}
-
+	
 	public Boolean sellCard(int userId, int cardId) {
 		Boolean returnValue = false;
 		User user = userService.findById(userId);
@@ -71,7 +66,6 @@ public class CardService {
 		}
 		
 		return returnValue;
-		
 	}
 
 

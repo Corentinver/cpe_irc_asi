@@ -14,6 +14,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findUserWithName(String username);
     
     @Query(" select u from User u " +
+    		" where u.surname = ?1 and password = ?2")
+	Optional<User> findUserWithSurnameAndPassword(String surname, String password);
+    
+    @Query(" select u from User u " +
             " where u.username = ?1 and money > ?2")
     Optional<User> hasEnoughMoney(int id, double money);
     

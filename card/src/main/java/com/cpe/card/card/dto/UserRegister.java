@@ -3,10 +3,12 @@ package com.cpe.card.card.dto;
 public class UserRegister {
 
 	private String surname;
-	private String name;
 	private String password;
 	
-	public UserRegister() {}
+	public UserRegister(String surname, String password) {
+		setSurname(surname);
+		setPassword(password);
+	}
 
 	public String getSurname() {
 		return surname;
@@ -16,14 +18,6 @@ public class UserRegister {
 		this.surname = surname;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -31,7 +25,5 @@ public class UserRegister {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 
 }

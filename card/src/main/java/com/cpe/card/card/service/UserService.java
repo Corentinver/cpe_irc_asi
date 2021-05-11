@@ -44,4 +44,8 @@ public class UserService{
     	
     	return null;
     }
+    
+    public Boolean login(UserRegister user) {
+    	return (userRepository.findUserWithSurnameAndPassword(user.getSurname(), user.getPassword()) != null);
+    }
 }
