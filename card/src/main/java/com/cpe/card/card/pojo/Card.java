@@ -13,9 +13,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ManyToAny;
 
-import lombok.Data;
-
-@Data
 @Entity(name="Card")
 @Table(name="card")
 public class Card {

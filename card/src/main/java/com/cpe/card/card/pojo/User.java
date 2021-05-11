@@ -25,9 +25,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
+@RequiredArgsConstructor
 @Entity(name="User")
 @Table(name = "user")
 public class User implements Serializable{
@@ -56,4 +59,13 @@ public class User implements Serializable{
     		inverseJoinColumns = @JoinColumn(name = "card_id")
     )
     List<Card> cards = new ArrayList<>();
+    
+
+	public void addCard(Card card) {
+        cards.add(card);
+    }
+
+    public void removeCard(Card card) {
+    	cards.remove(card);
+    }  
 }

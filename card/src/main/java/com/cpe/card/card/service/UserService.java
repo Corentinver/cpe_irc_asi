@@ -8,31 +8,31 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.cpe.card.card.dto.UserDTO;
 import com.cpe.card.card.dto.UserRegister;
 import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.UserRepository;
+import com.sun.el.stream.Optional;
 
+import lombok.Data;
+
+@Data
 @Service
-public class UserService implements UserDetailsService {
+public class UserService{
 
-	
-	@Autowired
 	private UserRepository userRepository;
-	
     
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Objects.requireNonNull(username);
-        User user = userRepository.findUserWithName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return user;
-    }
-    
-    public User createUser(UserRegister userInfo) {
-    	return userRepository.createUser(new User(1, "", userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 10.0));
+    public User createUser(UserDTO userInfo) {
+    	return userRepository.createUser(new User(1, "", userInfo.ge, userInfo.getSurname(), userInfo.getName(), 10.0));
     }
     
     public Boolean canBuy(int userId, double money) {
     	return userRepository.hasEnoughMoney(userId, money).isPresent();
+    }
+    
+    public User getUserInfo(int userId) {
+    	java.util.Optional<User> user = userRepository.findById(userId);
+    	
+    	if(user.is)
     }
 }
