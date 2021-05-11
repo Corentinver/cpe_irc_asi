@@ -15,9 +15,10 @@ import com.cpe.card.card.repository.OwnedCardRepository;
 
 import lombok.Data;
 
+@Data
 @Service
 public class CardService {
-	
+
 	@Autowired
 	private OwnedCardRepository ownedCardRepository;
 	
@@ -26,7 +27,6 @@ public class CardService {
 	
 	@Autowired
 	private UserService userService;
-	
 
 	public List<Card> getOwnedCardsByUser(int id) {
 		List<OwnedCard> listOwnedCards = ownedCardRepository.findOwnedCard(id);
@@ -58,6 +58,10 @@ public class CardService {
 			.collect(Collectors.toList());
 	}
 
+	public Boolean sellCard(OwnedCard ownedCard) {
+		
+	}
+
 	public Boolean buyCard(int userId, int cardId) {
 		Boolean returnValue = false;
 		Optional<Card> optionalCard = cardRepository.findById(ownedCard.cardId);
@@ -74,7 +78,8 @@ public class CardService {
 		return returnValue;
 	}
 
-	public Boolean sellCard(int userId, int cardId) {
+	public Object sellCard(int userId, int cardId) {
+		ownedCardRepository.delete(ownedCard);
 		return null;
 	}
 
