@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Created-By: 11.0.11 (Ubuntu)
+
+Name: dbeaver.png
+SHA-256-Digest: 4c+KvFBZJ0BRVqvUc76o/8dmUQZAjRmWc9YzjDktfSw=
+
