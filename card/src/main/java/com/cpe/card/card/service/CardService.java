@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.cpe.card.card.dto.OwnedCard;
 import com.cpe.card.card.pojo.Card;
+import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.CardRepository;
 import com.cpe.card.card.repository.OwnedCardRepository;
-
-import lombok.Data;
 
 @Service
 public class CardService {
@@ -27,43 +26,27 @@ public class CardService {
 	@Autowired
 	private UserService userService;
 	
-
-	public List<Card> getOwnedCardsByUser(int id) {
-		List<OwnedCard> listOwnedCards = ownedCardRepository.findOwnedCard(id);
-		List<Card> listCards = new ArrayList<>();
-		
-		listOwnedCards.forEach(ownedCard -> {
-			Optional<Card> card = cardRepository.findById(ownedCard.getCardId());
-			if (card.isPresent()) {
-				listCards.add(card.get());
-			}
-		});
-		
-		return listCards;
+	public List<Card> getCollectionCardsByUser(int id) {
+		User user = userService.findById(id);
+		return user.getCards();
 	}
 
-	public List<Card> getUnownedCardsByUser(int id) {
-		List<OwnedCard> listOwnedCards = ownedCardRepository.findOwnedCard(id);
-		List<Integer> listIdOwnedCards = new ArrayList<Integer>();
-		listIdOwnedCards.removeAll(arg0)
-		
-		listOwnedCards.forEach(ownedCard -> {
-			listIdOwnedCards.add(ownedCard.getCardId());
-		});
-		
+	public List<Card> getShopCardsByUser(int id) {
+		User user = userService.findById(id);
+		List<Card> listOwnedCards = user.getCards();
 		List<Card> listAllCards = cardRepository.findAll();
-		
-		return listAllCards.stream()
-			.filter(card -> !listIdOwnedCards.contains(card.getId()))
-			.collect(Collectors.toList());
+		listAllCards.removeAll(listOwnedCards);
+		return listAllCards;
 	}
 
 	public Boolean buyCard(int userId, int cardId) {
 		Boolean returnValue = false;
-		Optional<Card> optionalCard = cardRepository.findById(ownedCard.cardId);
+		User user = userService.findById(userId);
+		Optional<Card> optionalCard = cardRepository.findById(cardId);
 		if(optionalCard.isPresent()) {
-			if(userService.canBuy(ownedCard.userId, optionalCard.get().getPrice())) {
-				ownedCardRepository.save(ownedCard);
+			if(userService.canBuy(userId, optionalCard.get().getPrice())) {
+				userService.buy(userId,optionalCard.get().getPrice());
+				user.addCard(optionalCard.get());
 				returnValue = true;
 			}	
 		}
@@ -75,7 +58,22 @@ public class CardService {
 	}
 
 	public Boolean sellCard(int userId, int cardId) {
-		return null;
+		Boolean returnValue = false;
+		User user = userService.findById(userId);
+		Optional<Card> optionalCard = cardRepository.findById(cardId);
+		if(optionalCard.isPresent()) {
+			userService.sell(userId, optionalCard.get().getPrice());
+			user.removeCard(optionalCard.get());
+			returnValue = true;
+		}
+		else {
+			// throw or false; returnValue = false;
+		}
+		
+		return returnValue;
+		
 	}
+
+
 
 }

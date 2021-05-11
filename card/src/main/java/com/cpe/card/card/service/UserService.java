@@ -14,15 +14,12 @@ import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.UserRepository;
 import com.sun.el.stream.Optional;
 
-import lombok.Data;
-
-@Data
 @Service
 public class UserService{
 
 	private UserRepository userRepository;
     
-    public User createUser(UserDTO userInfo) {
+    public User createUser(User userInfo) {
     	return userRepository.createUser(new User(1, "", userInfo.ge, userInfo.getSurname(), userInfo.getName(), 10.0));
     }
     
@@ -30,9 +27,21 @@ public class UserService{
     	return userRepository.hasEnoughMoney(userId, money).isPresent();
     }
     
-    public User getUserInfo(int userId) {
+    public void buy(int userId, double money) {
+    	userRepository.pickUpMoney(userId, money);
+    }
+    
+    public void sell(int userId, double money) {
+    	userRepository.addMoney(userId, money);
+    }
+    
+    public User findById(int userId) {
     	java.util.Optional<User> user = userRepository.findById(userId);
     	
-    	if(user.is)
+    	if(user.isPresent()) {
+    		return user.get();
+    	}
+    	
+    	return null;
     }
 }

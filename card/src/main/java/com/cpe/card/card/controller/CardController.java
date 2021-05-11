@@ -19,12 +19,12 @@ public class CardController {
 
 	@GetMapping("/collection/{id}")
 	public ResponseEntity<?> getOwnedCardsByUser(@RequestParam int id) {
-		return new ResponseEntity<>(cardService.getOwnedCardsByUser(id), HttpStatus.OK);
+		return new ResponseEntity<>(cardService.getCollectionCardsByUser(id), HttpStatus.OK);
 	}
 	
 	@GetMapping("/shop/{id}")
 	public ResponseEntity<?> getUnownedCards(@RequestParam int id) {
-		return new ResponseEntity<>(cardService.getUnownedCardsByUser(id), HttpStatus.OK);
+		return new ResponseEntity<>(cardService.getShopCardsByUser(id), HttpStatus.OK);
 	}
 			
 	

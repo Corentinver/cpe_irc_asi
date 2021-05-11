@@ -18,9 +18,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> hasEnoughMoney(int id, double money);
     
     @Query(" update User " +
-    	   "Set money -= ?2" + 
+    	   "Set money = money - ?2" + 
             " where u.username = ?1")
     Optional<User> pickUpMoney(int id, double money);
+    
+    @Query(" update User " +
+     	   "Set money = money + ?2" + 
+             " where u.username = ?1")
+    Optional<User> addMoney(int id, double money);
     
     User createUser(User user);
     
