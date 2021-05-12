@@ -24,23 +24,23 @@ SET default_table_access_method = heap;
 
 --
 -- TOC entry 207 (class 1259 OID 24632)
--- Name: Affinity; Type: TABLE; Schema: public; Owner: postgres
+-- Name: affinity; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."Affinity" (
+CREATE TABLE public."affinity" (
     id integer NOT NULL,
     name character varying(50)
 );
 
 
-ALTER TABLE public."Affinity" OWNER TO postgres;
+ALTER TABLE public."affinity" OWNER TO postgres;
 
 --
 -- TOC entry 206 (class 1259 OID 24630)
--- Name: Affinity_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: affinity_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public."Affinity_id_seq"
+CREATE SEQUENCE public."affinity_id_seq"
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -49,23 +49,23 @@ CREATE SEQUENCE public."Affinity_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Affinity_id_seq" OWNER TO postgres;
+ALTER TABLE public."affinity_id_seq" OWNER TO postgres;
 
 --
 -- TOC entry 2982 (class 0 OID 0)
 -- Dependencies: 206
--- Name: Affinity_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: affinity_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public."Affinity_id_seq" OWNED BY public."Affinity".id;
+ALTER SEQUENCE public."affinity_id_seq" OWNED BY public."affinity".id;
 
 
 --
 -- TOC entry 201 (class 1259 OID 24589)
--- Name: Card; Type: TABLE; Schema: public; Owner: postgres
+-- Name: card; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."Card" (
+CREATE TABLE public."card" (
     id integer NOT NULL,
     name character varying(128),
     description character varying(512),
@@ -78,14 +78,14 @@ CREATE TABLE public."Card" (
 );
 
 
-ALTER TABLE public."Card" OWNER TO postgres;
+ALTER TABLE public."card" OWNER TO postgres;
 
 --
 -- TOC entry 200 (class 1259 OID 24587)
--- Name: Card_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: card_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public."Card_id_seq"
+CREATE SEQUENCE public."card_id_seq"
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -94,36 +94,36 @@ CREATE SEQUENCE public."Card_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Card_id_seq" OWNER TO postgres;
+ALTER TABLE public."card_id_seq" OWNER TO postgres;
 
 --
 -- TOC entry 2983 (class 0 OID 0)
 -- Dependencies: 200
--- Name: Card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public."Card_id_seq" OWNED BY public."Card".id;
+ALTER SEQUENCE public."card_id_seq" OWNED BY public."card".id;
 
 
 --
 -- TOC entry 205 (class 1259 OID 24624)
--- Name: Family; Type: TABLE; Schema: public; Owner: postgres
+-- Name: family; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."Family" (
+CREATE TABLE public."family" (
     id integer NOT NULL,
     name character varying(50)
 );
 
 
-ALTER TABLE public."Family" OWNER TO postgres;
+ALTER TABLE public."family" OWNER TO postgres;
 
 --
 -- TOC entry 204 (class 1259 OID 24622)
--- Name: Family_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: family_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public."Family_id_seq"
+CREATE SEQUENCE public."family_id_seq"
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -132,23 +132,23 @@ CREATE SEQUENCE public."Family_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Family_id_seq" OWNER TO postgres;
+ALTER TABLE public."family_id_seq" OWNER TO postgres;
 
 --
 -- TOC entry 2984 (class 0 OID 0)
 -- Dependencies: 204
--- Name: Family_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: family_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public."Family_id_seq" OWNED BY public."Family".id;
+ALTER SEQUENCE public."family_id_seq" OWNED BY public."family".id;
 
 
 --
 -- TOC entry 203 (class 1259 OID 24609)
--- Name: User; Type: TABLE; Schema: public; Owner: postgres
+-- Name: user; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."User" (
+CREATE TABLE public."user" (
     id integer NOT NULL,
     name character varying(30),
     surname character varying(30),
@@ -157,14 +157,14 @@ CREATE TABLE public."User" (
 );
 
 
-ALTER TABLE public."User" OWNER TO postgres;
+ALTER TABLE public."user" OWNER TO postgres;
 
 --
 -- TOC entry 202 (class 1259 OID 24605)
--- Name: User_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public."User_id_seq"
+CREATE SEQUENCE public."user_id_seq"
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -173,56 +173,56 @@ CREATE SEQUENCE public."User_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."User_id_seq" OWNER TO postgres;
+ALTER TABLE public."user_id_seq" OWNER TO postgres;
 
 --
 -- TOC entry 2985 (class 0 OID 0)
 -- Dependencies: 202
--- Name: User_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public."User_id_seq" OWNED BY public."User".id;
+ALTER SEQUENCE public."user_id_seq" OWNED BY public."user".id;
 
 
 --
 -- TOC entry 2826 (class 2604 OID 24635)
--- Name: Affinity id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: affinity id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Affinity" ALTER COLUMN id SET DEFAULT nextval('public."Affinity_id_seq"'::regclass);
+ALTER TABLE ONLY public."affinity" ALTER COLUMN id SET DEFAULT nextval('public."affinity_id_seq"'::regclass);
 
 
 --
 -- TOC entry 2823 (class 2604 OID 24592)
--- Name: Card id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: card id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Card" ALTER COLUMN id SET DEFAULT nextval('public."Card_id_seq"'::regclass);
+ALTER TABLE ONLY public."card" ALTER COLUMN id SET DEFAULT nextval('public."card_id_seq"'::regclass);
 
 
 --
 -- TOC entry 2825 (class 2604 OID 24627)
--- Name: Family id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: family id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Family" ALTER COLUMN id SET DEFAULT nextval('public."Family_id_seq"'::regclass);
+ALTER TABLE ONLY public."family" ALTER COLUMN id SET DEFAULT nextval('public."family_id_seq"'::regclass);
 
 
 --
 -- TOC entry 2824 (class 2604 OID 24612)
--- Name: User id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User_id_seq"'::regclass);
+ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public."user_id_seq"'::regclass);
 
 
 --
 -- TOC entry 2976 (class 0 OID 24632)
 -- Dependencies: 207
--- Data for Name: Affinity; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: affinity; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Affinity" (id, name) 
+INSERT INTO public."affinity" (id, name) 
 VALUES  (1,A),
         (2,B),
         (3,C),
@@ -232,10 +232,10 @@ VALUES  (1,A),
 --
 -- TOC entry 2970 (class 0 OID 24589)
 -- Dependencies: 201
--- Data for Name: Card; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: card; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Card" (id, name, description, energy, hp, price, affinity, family, image)
+INSERT INTO public."card" (id, name, description, energy, hp, price, affinity, family, image)
 VALUES  (1, Dracaufeu, Gros dragon qui crache du feu, 2, 200, 34567.567, 1, 2, path),
         (2, Bulbizarre, Une plante avec des pattes, 4, 140, 347.567, 4, 3, path),
         (3, Typhlosion, Aïe ça brule, 2, 190, 3407.567, 2, 2, path),
@@ -245,24 +245,24 @@ VALUES  (1, Dracaufeu, Gros dragon qui crache du feu, 2, 200, 34567.567, 1, 2, p
 --
 -- TOC entry 2974 (class 0 OID 24624)
 -- Dependencies: 205
--- Data for Name: Family; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: family; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Family" (id, name) 
-VALUES  (1,FamilyA),
-        (2,FamilyB),
-        (3,FamilyC),
-        (4,FamilyD),
-        (5,FamilyE);
+INSERT INTO public."family" (id, name) 
+VALUES  (1,familyA),
+        (2,familyB),
+        (3,familyC),
+        (4,familyD),
+        (5,familyE);
 
 
 --
 -- TOC entry 2972 (class 0 OID 24609)
 -- Dependencies: 203
--- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."User" (id, name, surname, password, money)
+INSERT INTO public."user" (id, name, surname, password, money)
 VALUES  (1, Vincent, Vince, 123456, 99999999999999),
         (2, Gouy, Quentin, azerty, 9999),
         (3, Vergnon, Corentin, password, 99999999999),
@@ -272,73 +272,73 @@ VALUES  (1, Vincent, Vince, 123456, 99999999999999),
 --
 -- TOC entry 2986 (class 0 OID 0)
 -- Dependencies: 206
--- Name: Affinity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: affinity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Affinity_id_seq"', 5, true);
+SELECT pg_catalog.setval('public."affinity_id_seq"', 5, true);
 
 
 --
 -- TOC entry 2987 (class 0 OID 0)
 -- Dependencies: 200
--- Name: Card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Card_id_seq"', 4, true);
+SELECT pg_catalog.setval('public."card_id_seq"', 4, true);
 
 
 --
 -- TOC entry 2988 (class 0 OID 0)
 -- Dependencies: 204
--- Name: Family_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: family_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Family_id_seq"', 5, true);
+SELECT pg_catalog.setval('public."family_id_seq"', 5, true);
 
 
 --
 -- TOC entry 2989 (class 0 OID 0)
 -- Dependencies: 202
--- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."User_id_seq"', 4, true);
+SELECT pg_catalog.setval('public."user_id_seq"', 4, true);
 
 
 --
 -- TOC entry 2836 (class 2606 OID 24637)
--- Name: Affinity Affinity_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: affinity affinity_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Affinity"
-    ADD CONSTRAINT "Affinity_pkey" PRIMARY KEY (id);
+ALTER TABLE ONLY public."affinity"
+    ADD CONSTRAINT "affinity_pkey" PRIMARY KEY (id);
 
 
 --
 -- TOC entry 2828 (class 2606 OID 24597)
--- Name: Card Card_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: card card_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Card"
-    ADD CONSTRAINT "Card_pkey" PRIMARY KEY (id);
+ALTER TABLE ONLY public."card"
+    ADD CONSTRAINT "card_pkey" PRIMARY KEY (id);
 
 
 --
 -- TOC entry 2834 (class 2606 OID 24629)
--- Name: Family Family_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: family family_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Family"
-    ADD CONSTRAINT "Family_pkey" PRIMARY KEY (id);
+ALTER TABLE ONLY public."family"
+    ADD CONSTRAINT "family_pkey" PRIMARY KEY (id);
 
 
 --
 -- TOC entry 2832 (class 2606 OID 24615)
--- Name: User User_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."User"
-    ADD CONSTRAINT "User_pkey" PRIMARY KEY (id);
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT "user_pkey" PRIMARY KEY (id);
 
 
 --
@@ -346,7 +346,7 @@ ALTER TABLE ONLY public."User"
 -- Name: fki_affinity; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX fki_affinity ON public."Card" USING btree (affinity);
+CREATE INDEX fki_affinity ON public."card" USING btree (affinity);
 
 
 --
@@ -354,25 +354,25 @@ CREATE INDEX fki_affinity ON public."Card" USING btree (affinity);
 -- Name: fki_family; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX fki_family ON public."Card" USING btree (family);
+CREATE INDEX fki_family ON public."card" USING btree (family);
 
 
 --
 -- TOC entry 2837 (class 2606 OID 24644)
--- Name: Card affinity; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: card affinity; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Card"
-    ADD CONSTRAINT affinity FOREIGN KEY (affinity) REFERENCES public."Affinity"(id);
+ALTER TABLE ONLY public."card"
+    ADD CONSTRAINT affinity FOREIGN KEY (affinity) REFERENCES public."affinity"(id);
 
 
 --
 -- TOC entry 2838 (class 2606 OID 24638)
--- Name: Card family; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: card family; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Card"
-    ADD CONSTRAINT family FOREIGN KEY (family) REFERENCES public."Family"(id);
+ALTER TABLE ONLY public."card"
+    ADD CONSTRAINT family FOREIGN KEY (family) REFERENCES public."family"(id);
 
 
 -- Completed on 2021-05-11 17:14:50
