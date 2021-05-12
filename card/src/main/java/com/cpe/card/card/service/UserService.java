@@ -1,18 +1,10 @@
 package com.cpe.card.card.service;
 
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.cpe.card.card.dto.UserDTO;
 import com.cpe.card.card.dto.UserRegister;
 import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.UserRepository;
-import com.sun.el.stream.Optional;
 
 @Service
 public class UserService{
@@ -20,7 +12,8 @@ public class UserService{
 	private UserRepository userRepository;
     
     public User createUser(User userInfo) {
-    	return userRepository.createUser(new User(1, "", userInfo.ge, userInfo.getSurname(), userInfo.getName(), 10.0));
+    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 0, null);
+    	return userRepository.createUser(user);
     }
     
     public Boolean canBuy(int userId, double money) {
@@ -45,7 +38,13 @@ public class UserService{
     	return null;
     }
     
-    public Boolean login(UserRegister user) {
-    	return (userRepository.findUserWithSurnameAndPassword(user.getSurname(), user.getPassword()) != null);
+    public User login(UserRegister userRegister) {
+    	java.util.Optional<User> user = userRepository.findUserWithSurnameAndPassword(userRegister.getSurname(), userRegister.getPassword());
+    	
+    	if(user.isPresent()) {
+    		return user.get();
+    	}
+    	
+    	return null;
     }
 }
