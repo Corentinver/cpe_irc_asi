@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cpe.card.card.service.CardService;
-import com.cpe.card.card.service.MarketServiceTest;
+import com.cpe.card.card.service.MarketService;
 
 @RestController
 @RequestMapping("/market")
 public class MarketController {
 	
-	@Autowired MarketServiceTest marketService;
+	@Autowired MarketService marketService;
 
 	@GetMapping("/sell")
 	public ResponseEntity<?> sellCard(@RequestParam int cardId, @RequestParam int userId) {
