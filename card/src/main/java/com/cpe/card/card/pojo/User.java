@@ -2,10 +2,7 @@ package com.cpe.card.card.pojo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
@@ -18,18 +15,16 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.NaturalId;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity(name="User")
-@Table(name = "user")
+@Table(name = "Users")
 public class User implements Serializable{
 	
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -48,8 +43,8 @@ public class User implements Serializable{
     
     @ManyToMany(cascade = { CascadeType.ALL})
     @JoinTable(
-    		name = "user_card",
-    		joinColumns = @JoinColumn(name = "user_id"),
+    		name = "users_card",
+    		joinColumns = @JoinColumn(name = "users_id"),
     		inverseJoinColumns = @JoinColumn(name = "card_id")
     )
     List<Card> cards = new ArrayList<>();
@@ -119,7 +114,11 @@ public class User implements Serializable{
 		this.name = name;
 		this.money = money;
 		this.cards = cards;
-	}  
+	}
+	
+	public User() {
+		
+	}
     
     
 }

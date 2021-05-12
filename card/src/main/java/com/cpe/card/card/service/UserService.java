@@ -1,26 +1,39 @@
 package com.cpe.card.card.service;
 
-import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.stereotype.Service;
 
 import com.cpe.card.card.dto.UserDTO;
 import com.cpe.card.card.dto.UserRegister;
+import com.cpe.card.card.pojo.Card;
 import com.cpe.card.card.pojo.User;
+import com.cpe.card.card.repository.CardRepository;
 import com.cpe.card.card.repository.UserRepository;
-import com.sun.el.stream.Optional;
 
 @Service
 public class UserService{
 
+	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CardRepository cardRepository;
     
     public User createUser(User userInfo) {
-    	return userRepository.createUser(new User(1, "", userInfo.ge, userInfo.getSurname(), userInfo.getName(), 10.0));
+    	List<Card> allCards = cardRepository.findAll();
+    	List<Card> randomCards = new ArrayList<Card>();
+
+    	for(int i = 0; i < 5; i++) {
+    		int randomInt = ThreadLocalRandom.current().nextInt(0, allCards.size());
+    		randomCards.add(allCards.get(randomInt));
+    	}
+    	
+    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);
+    	return userRepository.save(user);
     }
     
     public Boolean canBuy(int userId, double money) {
@@ -45,7 +58,13 @@ public class UserService{
     	return null;
     }
     
-    public Boolean login(UserRegister user) {
-    	return (userRepository.findUserWithSurnameAndPassword(user.getSurname(), user.getPassword()) != null);
+    public UserDTO login(UserRegister userRegister) {
+    	java.util.Optional<User> user = userRepository.findUserWithSurnameAndPassword(userRegister.getSurname(), userRegister.getPassword());
+    	UserDTO userDTO = null;
+    	if(user.isPresent()) {
+    		userDTO = new UserDTO(user.get().getUserId(), user.get().getSurname(), user.get().getPassword(), user.get().getMoney());
+    	}
+    	
+    	return userDTO;
     }
 }

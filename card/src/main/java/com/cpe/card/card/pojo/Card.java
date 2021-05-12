@@ -1,22 +1,21 @@
 package com.cpe.card.card.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.ManyToMany;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
-
 @Entity(name="Card")
-@Table(name="card")
+@Table(name="Card")
 public class Card {
 	
+	@Id
 	@Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -38,6 +37,14 @@ public class Card {
 	
 	@Column(name="path")
 	private String path;
+	
+	@OneToOne(cascade = { CascadeType.ALL})
+	@JoinColumn(name = "family_id", referencedColumnName = "id")
+	private Family family;
+	
+	@OneToOne(cascade = { CascadeType.ALL})
+	@JoinColumn(name = "affinity_id", referencedColumnName = "id")
+	private Affinity affinity;
 
 	public Integer getId() {
 		return id;
@@ -95,7 +102,24 @@ public class Card {
 		this.path = path;
 	}
 
-	public Card(Integer id, String name, String description, int energy, int hp, double price, String path) {
+	public Family getFamily() {
+		return family;
+	}
+
+	public void setFamily(Family family) {
+		this.family = family;
+	}
+
+	public Affinity getAffinity() {
+		return affinity;
+	}
+
+	public void setAffinity(Affinity affinity) {
+		this.affinity = affinity;
+	}
+
+	public Card(Integer id, String name, String description, int energy, int hp, double price, String path,
+			Family family, Affinity affinity) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -104,6 +128,12 @@ public class Card {
 		this.hp = hp;
 		this.price = price;
 		this.path = path;
+		this.family = family;
+		this.affinity = affinity;
+	}
+	
+	public Card() {
+		
 	}
 	
 	

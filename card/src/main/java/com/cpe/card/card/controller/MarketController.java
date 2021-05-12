@@ -9,20 +9,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cpe.card.card.service.CardService;
+import com.cpe.card.card.service.MarketServiceTest;
 
 @RestController
 @RequestMapping("/market")
 public class MarketController {
 	
-	@Autowired CardService cardService;
+	@Autowired MarketServiceTest marketService;
 
-	@GetMapping("/sell/{cardId}/{userId}")
+	@GetMapping("/sell")
 	public ResponseEntity<?> sellCard(@RequestParam int cardId, @RequestParam int userId) {
-		return new ResponseEntity<>(cardService.sellCard(userId, cardId), HttpStatus.OK);
+		return new ResponseEntity<>(marketService.sellCard(userId, cardId), HttpStatus.OK);
 	}
 	
-	@GetMapping("/buy/{cardId}/{userId}")
+	@GetMapping("/buy")
 	public ResponseEntity<?> buyCard(@RequestParam int cardId, @RequestParam int userId) {
-		return new ResponseEntity<>(cardService.buyCard(userId, cardId), HttpStatus.OK);
+		return new ResponseEntity<>(marketService.buyCard(userId, cardId), HttpStatus.OK);
 	}
 }
