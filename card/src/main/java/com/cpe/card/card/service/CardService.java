@@ -31,41 +31,9 @@ public class CardService {
 		listAllCards.removeAll(listOwnedCards);
 		return listAllCards;
 	}
-
-	public Boolean buyCard(int userId, int cardId) {
-		Boolean returnValue = false;
-		User user = userService.findById(userId);
-		Optional<Card> optionalCard = cardRepository.findById(cardId);
-		if(optionalCard.isPresent()) {
-			if(userService.canBuy(userId, optionalCard.get().getPrice())) {
-				userService.buy(userId,optionalCard.get().getPrice());
-				user.addCard(optionalCard.get());
-				returnValue = true;
-			}	
-		}
-		else {
-			// throw or false; returnValue = false;
-		}
-		
-		return returnValue;
-	}
 	
-	public Boolean sellCard(int userId, int cardId) {
-		Boolean returnValue = false;
-		User user = userService.findById(userId);
+	public Card getCardById(int cardId) {
 		Optional<Card> optionalCard = cardRepository.findById(cardId);
-		if(optionalCard.isPresent()) {
-			userService.sell(userId, optionalCard.get().getPrice());
-			user.removeCard(optionalCard.get());
-			returnValue = true;
-		}
-		else {
-			// throw or false; returnValue = false;
-		}
-		
-		return returnValue;
+		return optionalCard.get();
 	}
-
-
-
 }
