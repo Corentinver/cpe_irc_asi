@@ -1,5 +1,6 @@
 package com.cpe.card.card.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,7 +16,10 @@ import com.cpe.card.card.repository.UserRepository;
 @Service
 public class UserService{
 
+	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
 	private CardRepository cardRepository;
     
     public User createUser(User userInfo) {
@@ -28,7 +32,7 @@ public class UserService{
     	}
     	
     	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);
-    	return userRepository.createUser(user);
+    	return userRepository.save(user);
     }
     
     public Boolean canBuy(int userId, double money) {

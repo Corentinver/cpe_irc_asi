@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,10 +19,10 @@ public class LoginController {
 
 	@Autowired UserService userService;
 
-	@RequestMapping(method=RequestMethod.POST,value="/login")
-	public ResponseEntity<?> login(@RequestParam String surname, @RequestParam String password) {
-		UserRegister userRegister = new UserRegister(surname, password);
-		return new ResponseEntity<>(userService.login(userRegister), HttpStatus.OK);
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody UserRegister user) {
+		//UserRegister userRegister = new UserRegister(surname, password);
+		return new ResponseEntity<>(userService.login(user), HttpStatus.OK);
 	}
 	
 	@GetMapping("/logout")
