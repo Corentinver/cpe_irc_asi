@@ -1,18 +1,33 @@
 package com.cpe.card.card.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.stereotype.Service;
 
 import com.cpe.card.card.dto.UserRegister;
+import com.cpe.card.card.pojo.Card;
 import com.cpe.card.card.pojo.User;
+import com.cpe.card.card.repository.CardRepository;
 import com.cpe.card.card.repository.UserRepository;
 
 @Service
 public class UserService{
 
 	private UserRepository userRepository;
+	private CardRepository cardRepository;
     
     public User createUser(User userInfo) {
-    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 0, null);
+    	List<Card> allCards = cardRepository.findAll();
+    	List<Card> randomCards = new ArrayList<Card>();
+
+    	for(int i = 0; i < 5; i++) {
+    		int randomInt = ThreadLocalRandom.current().nextInt(0, allCards.size());
+    		randomCards.add(allCards.get(randomInt));
+    	}
+    	
+    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);
     	return userRepository.createUser(user);
     }
     
