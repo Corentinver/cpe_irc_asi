@@ -5,10 +5,10 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Acheter">
-      <app-buy></app-buy>
+      <app-buy [observableRequestCards]="requestUnowned"></app-buy>
   </mat-tab>
   <mat-tab label="Vendre">
-    <app-sell></app-sell>
+    <app-sell  [observableRequestCards]="requestOwned"></app-sell>
   </mat-tab>
   <mat-tab label="Jouer">
     En cours de développement

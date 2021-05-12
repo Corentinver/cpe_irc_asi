@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthentificationService } from '../services/authentification.service';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-sell',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellComponent implements OnInit {
 
-  constructor() { }
+  requestUnowned: Observable<any>;
+  constructor(private cardService: CardService, private authentificationService: AuthentificationService) { }
 
   ngOnInit(): void {
+    this.requestUnowned = this.cardService.getCollection(this.authentificationService.currentUser.id);
   }
+
 
 }

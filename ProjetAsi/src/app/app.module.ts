@@ -17,6 +17,7 @@ import { BuyComponent } from './buy/buy.component';
 import { MenuComponent } from './menu/menu.component';
 import { SellComponent } from './sell/sell.component';
 import { AuthGuard } from './auth-guard';
+import { ListCardsComponent } from './menu/list-cards/list-cards.component';
 
 
 
@@ -26,7 +27,8 @@ import { AuthGuard } from './auth-guard';
     LoginComponent,
     BuyComponent,
     MenuComponent,
-    SellComponent
+    SellComponent,
+    ListCardsComponent
   ],
   imports: [
     BrowserModule,

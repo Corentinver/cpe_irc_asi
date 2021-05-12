@@ -17,3 +17,4 @@ export interface Card {
     path: string;
     price: number;
 }
+
