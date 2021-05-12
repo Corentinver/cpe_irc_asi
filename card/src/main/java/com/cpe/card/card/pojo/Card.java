@@ -132,6 +132,10 @@ public class Card {
 		this.affinity = affinity;
 	}
 	
+	public Card() {
+		
+	}
+	
 	
 }
 

@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
 
+import com.cpe.card.card.dto.UserDTO;
 import com.cpe.card.card.dto.UserRegister;
 import com.cpe.card.card.pojo.Card;
 import com.cpe.card.card.pojo.User;
@@ -57,13 +58,13 @@ public class UserService{
     	return null;
     }
     
-    public User login(UserRegister userRegister) {
+    public UserDTO login(UserRegister userRegister) {
     	java.util.Optional<User> user = userRepository.findUserWithSurnameAndPassword(userRegister.getSurname(), userRegister.getPassword());
-    	
+    	UserDTO userDTO = null;
     	if(user.isPresent()) {
-    		return user.get();
+    		userDTO = new UserDTO(user.get().getUserId(), user.get().getSurname(), user.get().getPassword(), user.get().getMoney());
     	}
     	
-    	return null;
+    	return userDTO;
     }
 }

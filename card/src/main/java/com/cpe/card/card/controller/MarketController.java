@@ -17,12 +17,12 @@ public class MarketController {
 	
 	@Autowired MarketService marketService;
 
-	@GetMapping("/sell/{cardId}/{userId}")
+	@GetMapping("/sell")
 	public ResponseEntity<?> sellCard(@RequestParam int cardId, @RequestParam int userId) {
 		return new ResponseEntity<>(marketService.sellCard(userId, cardId), HttpStatus.OK);
 	}
 	
-	@GetMapping("/buy/{cardId}/{userId}")
+	@GetMapping("/buy")
 	public ResponseEntity<?> buyCard(@RequestParam int cardId, @RequestParam int userId) {
 		return new ResponseEntity<>(marketService.buyCard(userId, cardId), HttpStatus.OK);
 	}

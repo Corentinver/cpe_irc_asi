@@ -248,12 +248,41 @@ VALUES  (1, Dracaufeu, Gros dragon qui crache du feu, 2, 200, 34567.567, 1, 2, p
 -- Data for Name: Family; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Family" (id, name) 
-VALUES  (1,FamilyA),
-        (2,FamilyB),
-        (3,FamilyC),
-        (4,FamilyD),
-        (5,FamilyE);
+INSERT INTO Affinity (id, name) 
+VALUES  (1,'A'),
+        (2,'B'),
+        (3,'C'),
+        (4,'D'),
+        (5,'E');
+
+
+        --
+-- TOC entry 2974 (class 0 OID 24624)
+-- Dependencies: 205
+-- Data for Name: Family; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO Family (id, name) 
+VALUES  (1,'FamilyA'),
+        (2,'FamilyB'),
+        (3,'FamilyC'),
+        (4,'FamilyD'),
+        (5,'FamilyE');
+
+--
+-- TOC entry 2970 (class 0 OID 24589)
+-- Dependencies: 201
+-- Data for Name: Card; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO Card (id, name, description, energy, hp, price, path, affinity_id, family_id)
+VALUES  (1, 'Dracaufeu', 'Gros dragon qui crache du feu', 2, 200, 34567.567, 'path',1, 2),
+        (2, 'Bulbizarre', 'Une plante avec des pattes', 4, 140, 347.567, 'path',4, 3),
+        (3, 'Typhlosion', 'Aïe ça brule', 2, 190, 3407.567, 'path',2, 2),
+        (4, 'MewTwo', 'Grille ta master ball pour le chopper (ou ton porte monnaie)', 80, 230, 34999907.567, 'path',4, 4);
+
+
+
 
 
 --
@@ -262,11 +291,19 @@ VALUES  (1,FamilyA),
 -- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."User" (id, name, surname, password, money)
-VALUES  (1, Vincent, Vince, 123456, 99999999999999),
-        (2, Gouy, Quentin, azerty, 9999),
-        (3, Vergnon, Corentin, password, 99999999999),
-        (4, Poulard, Antonin, secure, 0);
+INSERT INTO Users (id, name, surname, password, money)
+VALUES  (1, 'Vincent', 'Vince', '123456', 99999999999999),
+        (2, 'Gouy', 'Quentin', 'azerty', 9999),
+        (3, 'Vergnon', 'Corentin', 'password', 99999999999),
+        (4, 'Poulard', 'Antonin', 'secure', 0);
+
+
+INSERT INTO Users_Card (users_id, card_id)
+VALUES  (2, 1),
+        (2, 2),
+        (2, 3),
+        (2, 4);
+
 
 
 --

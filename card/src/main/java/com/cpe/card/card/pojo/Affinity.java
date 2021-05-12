@@ -37,4 +37,8 @@ public class Affinity {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Affinity() {
+		
+	}
 }

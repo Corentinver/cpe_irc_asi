@@ -1,6 +1,7 @@
 package com.cpe.card.card.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 
@@ -13,8 +14,7 @@ public class UserDTO {
 	@JsonProperty("surname")
 	private String surname;
 	
-	@JsonProperty("password")
-	@JsonSerialize(using = StringSerializer.class)
+	@JsonProperty(access = Access.WRITE_ONLY, value="password")
 	private String password;
 	
 	@JsonProperty("money")
@@ -59,6 +59,12 @@ public class UserDTO {
 		this.password = password;
 		this.money = money;
 	}
+	
+	public UserDTO() {
+		
+	}
+	
+	
 	
 	
 }

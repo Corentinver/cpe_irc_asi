@@ -5,6 +5,9 @@ public class UserRegister {
 	private String surname;
 	private String password;
 	
+	public UserRegister() {
+	}
+	
 	public UserRegister(String surname, String password) {
 		setSurname(surname);
 		setPassword(password);

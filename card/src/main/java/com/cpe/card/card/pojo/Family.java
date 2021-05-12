@@ -38,6 +38,9 @@ public class Family {
 		this.name = name;
 	}
 	
+	public Family() {
+		
+	}
 	
 	
 }

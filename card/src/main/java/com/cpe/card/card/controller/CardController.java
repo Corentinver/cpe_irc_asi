@@ -16,12 +16,12 @@ public class CardController {
 		
 	@Autowired CardService cardService;
 
-	@GetMapping("/collection/{id}")
+	@GetMapping("/collection")
 	public ResponseEntity<?> getOwnedCardsByUser(@RequestParam int id) {
 		return new ResponseEntity<>(cardService.getCollectionCardsByUser(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/shop/{id}")
+	@GetMapping("/shop")
 	public ResponseEntity<?> getUnownedCards(@RequestParam int id) {
 		return new ResponseEntity<>(cardService.getShopCardsByUser(id), HttpStatus.OK);
 	}
