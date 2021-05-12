@@ -25,6 +25,4 @@ public class CardController {
 	public ResponseEntity<?> getUnownedCards(@RequestParam int id) {
 		return new ResponseEntity<>(cardService.getShopCardsByUser(id), HttpStatus.OK);
 	}
-			
-	
 }

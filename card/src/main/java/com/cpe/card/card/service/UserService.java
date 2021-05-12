@@ -1,5 +1,6 @@
 package com.cpe.card.card.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cpe.card.card.dto.UserRegister;
@@ -9,11 +10,12 @@ import com.cpe.card.card.repository.UserRepository;
 @Service
 public class UserService{
 
+	@Autowired
 	private UserRepository userRepository;
     
     public User createUser(User userInfo) {
     	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 0, null);
-    	return userRepository.createUser(user);
+    	return userRepository.save(user);
     }
     
     public Boolean canBuy(int userId, double money) {

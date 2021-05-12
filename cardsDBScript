@@ -222,14 +222,12 @@ ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User
 -- Data for Name: Affinity; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Affinity" (id, name) FROM stdin;
-1	A
-2	B
-3	C
-4	D
-5	E
-\.
-
+INSERT INTO public."Affinity" (id, name) 
+VALUES  (1,A),
+        (2,B),
+        (3,C),
+        (4,D),
+        (5,E);
 
 --
 -- TOC entry 2970 (class 0 OID 24589)
@@ -237,12 +235,11 @@ COPY public."Affinity" (id, name) FROM stdin;
 -- Data for Name: Card; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Card" (id, name, description, energy, hp, price, affinity, family, image) FROM stdin;
-1	Dracaufeu	Gros dragon qui crache du feu	2	200	34567.567	1	2	path
-2	Bulbizarre	Une plante avec des pattes	4	140	347.567	4	3	path
-3	Typhlosion	Aïe ça brule	9000	190	3407.567	2	2	path
-4	MewTwo	Grille ta master ball pour le chopper (ou ton porte monnaie)	80	230	34999907.567	4	4	path
-\.
+INSERT INTO public."Card" (id, name, description, energy, hp, price, affinity, family, image)
+VALUES  (1, Dracaufeu, Gros dragon qui crache du feu, 2, 200, 34567.567, 1, 2, path),
+        (2, Bulbizarre, Une plante avec des pattes, 4, 140, 347.567, 4, 3, path),
+        (3, Typhlosion, Aïe ça brule, 2, 190, 3407.567, 2, 2, path),
+        (4, MewTwo, Grille ta master ball pour le chopper (ou ton porte monnaie), 80, 230, 34999907.567, 4, 4, path);
 
 
 --
@@ -251,13 +248,12 @@ COPY public."Card" (id, name, description, energy, hp, price, affinity, family, 
 -- Data for Name: Family; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Family" (id, name) FROM stdin;
-1	FamilyA
-2	FamilyB
-3	FamilyC
-4	FamilyD
-5	FamilyE
-\.
+INSERT INTO public."Family" (id, name) 
+VALUES  (1,FamilyA),
+        (2,FamilyB),
+        (3,FamilyC),
+        (4,FamilyD),
+        (5,FamilyE);
 
 
 --
@@ -266,12 +262,11 @@ COPY public."Family" (id, name) FROM stdin;
 -- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."User" (id, name, surname, password, money) FROM stdin;
-1	Vincent	Vince	123456	99999999999999
-2	Gouy	Quentin	azerty	9999
-3	Vergnon	Corentin	password	99999999999
-4	Poulard	Antonin	secure	0
-\.
+INSERT INTO public."User" (id, name, surname, password, money)
+VALUES  (1, Vincent, Vince, 123456, 99999999999999),
+        (2, Gouy, Quentin, azerty, 9999),
+        (3, Vergnon, Corentin, password, 99999999999),
+        (4, Poulard, Antonin, secure, 0);
 
 
 --
