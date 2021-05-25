@@ -6,33 +6,43 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.cpe.card.card.pojo.Affinity;
 import com.cpe.card.card.pojo.Card;
+import com.cpe.card.card.pojo.Family;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@TestInstance(Lifecycle.PER_CLASS)
 public class CardRepositoryTest {
 
     @Autowired
     CardRepository cardRepository;
-	
-    @Before
-    public void setUp() {
-    	/*for(int i = 0; i < 10; i++) {
-            cardRepository.save(new Card(i, 
-            		"Card" + i + "Test - Name", 
-            		"Card" + i + "Test - Description",
-            		10 * i, 10* i , 50 * i, 
-            		"Card" + i + "Test - Path"));
-    	}*/
+
+    @BeforeAll
+    public void setUp() { 
+    	for(int i = 1; i < 11; i++) {
+    		Card card = new Card(i, "test-Name" + i, "test-Description" + i, 10 * i, 25 * i, 5.5 * i,
+    				"test-Path" + i, new Family(i, "test-Name" + i), new Affinity(i, "test-Name" + i));
+    		cardRepository.save(card);
+    	}
     }
 
-    @After
+    @AfterAll
     public void cleanUp() {
         cardRepository.deleteAll();
     }
@@ -46,16 +56,16 @@ public class CardRepositoryTest {
     @Test
     public void findById() throws Exception {
     	int i = 5;
-    	
+
     	Card card = cardRepository.findById(i).get();
-    	
+
     	assertTrue(card.getId() == i);
-    	assertTrue(card.getName() == "Card" + i + "Test - Name");
-    	assertTrue(card.getDescription() == "Card" + i + "Test - Description");
+    	assertTrue(card.getName().equals("test-Name" + i));
+    	assertTrue(card.getDescription().equals("test-Description" + i));
     	assertTrue(card.getEnergy() == i * 10);
-    	assertTrue(card.getHp() == i * 10);
-    	assertTrue(card.getPrice() == i * 50);
-    	assertTrue(card.getPath() == "Card" + i + "Test - Path");
+    	assertTrue(card.getHp() == i * 25);
+    	assertTrue(card.getPrice() == i * 5.5);
+    	assertTrue(card.getPath().equals("test-Path" + i));
     }
     
 }
