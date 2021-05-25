@@ -1,65 +1,59 @@
 package com.cpe.card.card.repository;
 
-import java.util.List;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cpe.card.card.pojo.Card;
+import com.cpe.card.card.pojo.User;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@TestInstance(Lifecycle.PER_CLASS)
 public class UserRepositoryTest {
 
     @Autowired
     UserRepository userRepository;
-    
-    @Autowired
-    CardRepository cardRepository;
 	
-    @Before
+    @BeforeAll
     public void setUp() {
-    	// TODO (add Users with Cards)
+		User user = new User(1, "test-pwd", "test-surname", "test-name", 25.5, new ArrayList<Card>());
+		userRepository.save(user);
     }
 
-    @After
+    @AfterAll
     public void cleanUp() {
         userRepository.deleteAll();
     }
     
     @Test
     public void findUserWithName() throws Exception {
-    	// TODO
+    	String surname = "test-surname";
+
+    	User user = userRepository.findUserWithName(surname).get();
+    	
+    	assertTrue(user.getSurname().equals(surname));
     }
     
     @Test
     public void findUserWithSurnameAndPassword() throws Exception {
-    	// TODO
-    }
-    
-    @Test
-    public void hasEnoughMoney() throws Exception {
-    	// TODO
-    }
-    
-    @Test
-    public void pickUpMoney() throws Exception {
-    	// TODO
-    }
-    
-    @Test
-    public void addMoney() throws Exception {
-    	// TODO
-    }
-    
-    @Test
-    public void createUser() throws Exception {
-    	// TODO
+    	String surname = "test-surname";
+    	String password = "test-pwd";
+    	
+    	User user = userRepository.findUserWithSurnameAndPassword(surname, password).get();
+    	
+    	assertTrue(user.getSurname().equals(surname));
+    	assertTrue(user.getPassword().equals(password));
     }
     
 }
