@@ -13,6 +13,7 @@ import com.cpe.card.card.pojo.Card;
 import com.cpe.card.card.pojo.User;
 import com.cpe.card.card.repository.CardRepository;
 import com.cpe.card.card.repository.UserRepository;
+import java.util.Optional;
 
 @Service
 public class UserService{
@@ -37,15 +38,37 @@ public class UserService{
     }
     
     public Boolean canBuy(int userId, double money) {
-    	return userRepository.hasEnoughMoney(userId, money).isPresent();
+    	Boolean result = false;
+    	
+    	Optional<User> user = userRepository.findById(userId);
+    	if(user.isPresent() && user.get().getMoney() >= money) {
+    		result = true;
+    	}
+    	
+    	return result;
+    	//return userRepository.hasEnoughMoney(userId, money) != 0;
     }
     
-    public void buy(int userId, double money) {
-    	userRepository.pickUpMoney(userId, money);
+    public void buy(int userId, Card card) {
+    	Optional<User> user = userRepository.findById(userId);
+    	if(user.isPresent()) {
+    		user.get().setMoney(user.get().getMoney() - card.getPrice());
+    		user.get().addCard(card);
+    		userRepository.save(user.get());
+    	}
+    	
+    	//return user.get();
+    	//userRepository.pickUpMoney(userId, money);
     }
     
-    public void sell(int userId, double money) {
-    	userRepository.addMoney(userId, money);
+    public void sell(int userId, Card card) {
+    	Optional<User> user = userRepository.findById(userId);
+    	if(user.isPresent()) {
+    		user.get().setMoney(user.get().getMoney() + card.getPrice());
+    		user.get().removeCard(card);
+    		userRepository.save(user.get());
+    	}
+    	//userRepository.addMoney(userId, money);
     }
     
     public User findById(int userId) {

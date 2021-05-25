@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
 import { CardService } from '../services/card.service';
+import { MarketService } from '../services/market.service';
 
 @Component({
   selector: 'app-buy',
@@ -10,12 +11,23 @@ import { CardService } from '../services/card.service';
 })
 export class BuyComponent implements OnInit {
 
-  requestUnowned: Observable<any>;
+  observableRequestCards: Observable<any>;
   
-  constructor(private cardService: CardService, private authentificationService: AuthentificationService) { }
+  constructor(
+    private cardService: CardService,
+    private marketService: MarketService, 
+    private authentificationService: AuthentificationService
+  ) { }
 
   ngOnInit(): void {
-    this.requestUnowned = this.cardService.getShop(this.authentificationService.currentUser.id);
+    this.observableRequestCards = this.cardService.getShop(this.authentificationService.currentUser.id);
   }
 
+  onBuyCard(cardId : number) : void {
+    console.log("buy card id : " + cardId);
+    this.marketService.buyCard(cardId, this.authentificationService.currentUser.id).subscribe((data) => {
+      this.observableRequestCards = this.cardService.getShop(this.authentificationService.currentUser.id);
+    });
+
+  }
 }

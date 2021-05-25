@@ -23,8 +23,7 @@ public class MarketService {
 		Card card = cardService.getCardById(cardId);
 		if(card != null) {
 			if(userService.canBuy(userId, card.getPrice())) {
-				userService.buy(userId,card.getPrice());
-				user.addCard(card);
+				userService.buy(userId, card);
 				returnValue = true;
 			}	
 		}
@@ -40,8 +39,7 @@ public class MarketService {
 		User user = userService.findById(userId);
 		Card card = cardService.getCardById(cardId);
 		if(card != null) {
-			userService.sell(userId, card.getPrice());
-			user.removeCard(card);
+			userService.sell(userId, card);
 			returnValue = true;
 		}
 		else {

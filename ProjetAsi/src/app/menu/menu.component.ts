@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,15 +13,15 @@ export class MenuComponent implements OnInit {
   constructor(private authentificationService: AuthentificationService) { }
 
   ngOnInit(): void {
+
   }
 
   getMonnaie() {
-    console.log(this.authentificationService.currentUser)
     return this.authentificationService.currentUser.money;
   }
 
-  getNom() {
-    return this.authentificationService.currentUser.name;
+  getSurname() {
+    return this.authentificationService.currentUser.surname;
   }
 
 }

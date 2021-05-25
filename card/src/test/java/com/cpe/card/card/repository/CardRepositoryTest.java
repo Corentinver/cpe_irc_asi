@@ -32,7 +32,7 @@ public class CardRepositoryTest {
 
     @Autowired
     CardRepository cardRepository;
-	
+
     @BeforeAll
     public void setUp() { 
     	for(int i = 1; i < 11; i++) {
