@@ -1,14 +1,14 @@
 <div class="row-layout width-100 justify-between">
     <span>{{ getMonnaie() }}</span>
-    <span>{{ getNom() }}</span>
+    <span>{{ getSurname() }}</span>
 </div>
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Acheter">
-      <app-buy [observableRequestCards]="requestUnowned"></app-buy>
+      <app-buy></app-buy>
   </mat-tab>
   <mat-tab label="Vendre">
-    <app-sell  [observableRequestCards]="requestOwned"></app-sell>
+    <app-sell></app-sell>
   </mat-tab>
   <mat-tab label="Jouer">
     En cours de développement

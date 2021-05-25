@@ -23,13 +23,13 @@ public class CardRepositoryTest {
 	
     @Before
     public void setUp() {
-    	for(int i = 0; i < 10; i++) {
+    	/*for(int i = 0; i < 10; i++) {
             cardRepository.save(new Card(i, 
             		"Card" + i + "Test - Name", 
             		"Card" + i + "Test - Description",
             		10 * i, 10* i , 50 * i, 
             		"Card" + i + "Test - Path"));
-    	}
+    	}*/
     }
 
     @After

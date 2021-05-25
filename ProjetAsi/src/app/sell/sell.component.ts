@@ -1,7 +1,9 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
 import { CardService } from '../services/card.service';
+import { MarketService } from '../services/market.service';
 
 @Component({
   selector: 'app-sell',
@@ -10,12 +12,23 @@ import { CardService } from '../services/card.service';
 })
 export class SellComponent implements OnInit {
 
-  requestUnowned: Observable<any>;
-  constructor(private cardService: CardService, private authentificationService: AuthentificationService) { }
+  observableRequestCards: Observable<any>;
+  
+  constructor(
+    private cardService: CardService,
+    private marketService: MarketService, 
+    private authentificationService: AuthentificationService
+  ) { }
 
   ngOnInit(): void {
-    this.requestUnowned = this.cardService.getCollection(this.authentificationService.currentUser.id);
+    this.observableRequestCards = this.cardService.getCollection(this.authentificationService.currentUser.id);
   }
 
+  onSellCard(cardId : number){
+    console.log("sell card id : " + cardId);
+    this.marketService.sellCard(cardId, this.authentificationService.currentUser.id).subscribe((data) => {
+      this.observableRequestCards = this.cardService.getCollection(this.authentificationService.currentUser.id);
+    });
+  }
 
 }

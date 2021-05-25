@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 import { Card } from 'src/app/model/card.model';
 
@@ -9,20 +11,33 @@ import { Card } from 'src/app/model/card.model';
 })
 export class ListCardsComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'family', 'affinity', 'energy', 'hp', 'price'];
-  dataCards: Card[];
+  displayedColumns: string[] = ['name', 'description', 'family', 'affinity', 'energy', 'hp', 'price', 'actions'];
+  dataCards: Card[] = [];
 
-  @Input() observableRequestCards: Observable<any>;
-
+  @Input() observableCards: Observable<any>;
+  @Output() onAction: EventEmitter<any> = new EventEmitter();
   isLoadingResults = true;
   
   constructor() { }
 
   ngOnInit(): void {
-    this.observableRequestCards.subscribe((data) => {
+    this.observableCards.subscribe((data) => {
+      console.log('data' + data);
       this.dataCards = data;
       this.isLoadingResults = false;
     });
+  }
+
+  ngChange(): void {
+    this.observableCards.subscribe((data) => {
+      console.log('data' + data);
+      this.dataCards = data;
+      this.isLoadingResults = false;
+    });
+  }
+
+  actionClickedByUser(cardId: number) : void{
+    this.onAction.emit(cardId);
   }
 
 }

@@ -33,6 +33,7 @@ public class CardService {
 	}
 	
 	public Card getCardById(int cardId) {
+		System.out.println("card id : " + cardId);
 		Optional<Card> optionalCard = cardRepository.findById(cardId);
 		return optionalCard.get();
 	}

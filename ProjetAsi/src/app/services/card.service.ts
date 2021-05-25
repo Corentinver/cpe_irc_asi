@@ -10,11 +10,11 @@ export class CardService {
   constructor(private httpClient: HttpClient) { }
 
   getCollection(userId: number): Observable<any> {
-    return this.httpClient.get(`http://localhost:8080/card/collection/${userId}`);
+    return this.httpClient.get(`http://localhost:8080/cards/collection?id=${userId}`);
   }
 
   getShop(userId: number): Observable<any> {
-    return this.httpClient.get(`http://localhost:8080/card/shop/${userId}`);
+    return this.httpClient.get(`http://localhost:8080/cards/shop?id=${userId}`);
   }
 
 }

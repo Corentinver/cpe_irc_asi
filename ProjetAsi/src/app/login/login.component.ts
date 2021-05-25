@@ -52,16 +52,15 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+    console.log(this.registerForm.get('surname').value);
     this.authentificationService.login(new Login(
-      this.registerForm.get('surname').value,
-      this.registerForm.get('password').value
+      this.loginForm.get('surname').value,
+      this.loginForm.get('password').value
     )).subscribe((data) => {
+      console.log('here');
       this.authentificationService.currentUser = data;
       this.route.navigate(['menu']);
     });
-    this.authentificationService.currentUser = new UserConnected(1, "Corentin", "Corentin", 150);
-    this.route.navigate(['menu']);
-
   }
 
   register() {
@@ -73,7 +72,5 @@ export class LoginComponent implements OnInit {
       this.authentificationService.currentUser = data;
       this.route.navigate(['menu']);
     });
-    this.authentificationService.currentUser = new UserConnected(1, "Corentin", "Corentin", 150);
-    this.route.navigate(['menu']);
   }
 }

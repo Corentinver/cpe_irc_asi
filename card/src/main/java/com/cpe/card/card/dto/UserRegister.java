@@ -1,8 +1,13 @@
 package com.cpe.card.card.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserRegister {
 
+	@JsonProperty("surname")
 	private String surname;
+	
+	@JsonProperty("password")
 	private String password;
 	
 	public UserRegister() {

@@ -17,12 +17,13 @@ export class AuthentificationService {
 
 
   createUser(user: User): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/users/', user);
+    return this.httpClient.post<User>('http://localhost:8080/users/', user);
   }
 
   
   login(loginInfo: Login): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/login', loginInfo);
+    console.log(loginInfo)
+    return this.httpClient.post<User>('http://localhost:8080/login', loginInfo);
   }
 
   logout(): Observable<any> {
