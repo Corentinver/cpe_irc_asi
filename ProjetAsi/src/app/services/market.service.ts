@@ -12,7 +12,7 @@ export class MarketService {
 
   
   buyCard(idCard: number, idUser: number): Observable<any> {
-    return this.httpClient.get(`localhost:8080/market/buy?cardId=${idCard}&userId=${idUser}`, {});
+    return this.httpClient.get(`http://localhost:8080/market/buy?cardId=${idCard}&userId=${idUser}`, {});
   }
 
   sellCard(idCard: number, idUser: number): Observable<any> {
