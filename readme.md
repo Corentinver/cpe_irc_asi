@@ -80,3 +80,13 @@ JDBC est l'acronyme de Java DataBase Connectivity et désigne une API pour perme
 | Base de données | Une seule base de données, avec la couche modèle qui se charge de récupérer les données et de les organiser. | D'une manière similaire au MVC, on ne retrouvera qu'une seule couche de données commune pour tous les services. | Comme il n'y a pas de couche commune de données entre chaque microservice, on retrouvera une base de donnée par microservice. Tout est encapsulé au niveau du microservice, ce qui permet, au final, de déployer voire de complètement revoir un microservice sans compromettre les autres microservices. |
 | Communication entre les composants | Puisqu'il s'agit d'une architecture dite "monolithique", chaque partie est en relation directe avec l'autre. Toute l'application est hébergée sur un même serveur. | Ici, on emploie un ESB (Entreprise Service Bus) pour que chaque service puisse communiquer. Cependant, si ce point d'accès tombe, c'est toute l'entreprise qui est compromise. Souvent on passera aussi par le protocole SOAP accompagné de son fichier de définition WSDL, ce qui peut rapidement devenir un peu lourd face au REST. | Chaque microservice étant indépendant, ils dialogueront habituellement à l'aide de protocoles légers comme REST toujours dans le souci de garder les choses simples. |
 | Points forts | Réutilisation facilitée du code, maintenance simplifiée, complexité du code atténuée. | Le code est réutilisé, les services peuvent facilement être étendus voire remplacés. | Résilience : un microservice qui tombe n'entraîne pas le reste de l'application avec lui.<br>Scalabilité : le redimensionnement des microservices est facilité puisque chaque microservice est indépendant des autres.<br>Agilité et productivité : on peut facilement constituer des équipes et faire évoluer chaque microservice sans impacter les autres. |
+
+### Notes sur le docker postgres
+
+On peut télécharger le docker sur https://hub.docker.com/_/postgres en lançant la commande `sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres`.
+
+Une fois l'image lancée, on peut récupérer ses informations avec la commande `sudo docker inspect some-postgres`. Ainsi, on peut voir l'adresse IP sur laquelle postgres est lancé (ici 172.17.0.2).
+
+On pourra alors modifier `application.properties` pour rajouter l'adresse IP et les informations de connexion idoines.
+
+Attention, il faudra tout de même relancer la partie "insertion" du script de base de données avant de relancer l'application. Pour cela, on va utiliser pgadmin pour se connecter à la base de données et lancer la partie du script en question.
