@@ -8,7 +8,10 @@
       <app-buy></app-buy>
   </mat-tab>
   <mat-tab label="Vendre">
-    <app-sell></app-sell>
+    
+    <ng-template matTabContent>
+      <app-sell></app-sell>
+    </ng-template>
   </mat-tab>
   <mat-tab label="Jouer">
     En cours de développement

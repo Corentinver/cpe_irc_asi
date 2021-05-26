@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
@@ -11,7 +11,6 @@ import { MarketService } from '../services/market.service';
   styleUrls: ['./sell.component.scss']
 })
 export class SellComponent implements OnInit {
-
   observableRequestCards: Observable<any>;
   
   constructor(

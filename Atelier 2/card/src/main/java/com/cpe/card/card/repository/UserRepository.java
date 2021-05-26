@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     		" where u.surname = ?1 and u.password = ?2")
 	Optional<User> findUserWithSurnameAndPassword(String surname, String password);
     
-    /*@Query(" select u from User u " +
+    @Query(" select u from User u " +
             " where u.id = :id and u.money > :money")
     int hasEnoughMoney(@Param("id") int id, @Param("money") double money);
     
@@ -34,5 +34,4 @@ public interface UserRepository extends JpaRepository<User, Integer> {
      	   "Set u.money = (u.money+:money)" + 
              " where u.id = :id")
     int addMoney(@Param("id") int id, @Param("money") double money);
-    */
 }
