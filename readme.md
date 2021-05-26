@@ -72,6 +72,12 @@ JDBC est l'acronyme de Java DataBase Connectivity et désigne une API pour perme
 
 ## Atelier 2
 
+###
+
+Schéma de l'architecture mise en oeuvre :
+
+![Atelier 2 - Architecture](./atelier2_architecture.jpg)
+
 ### Comparaison entre MVC (Model View Controller), SOA (Service-Oriented Architecture) et MicroService
 
 | Critère | MVC | SOA | MicroService
