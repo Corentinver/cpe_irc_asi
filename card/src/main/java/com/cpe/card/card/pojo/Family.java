@@ -2,6 +2,7 @@ package com.cpe.card.card.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,16 +12,17 @@ public class Family {
 	
 	@Id
 	@Column(name="id")
-	private int id;
+	@GeneratedValue
+	private Integer id;
 	
 	@Column(name="name")
 	private String name;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -32,7 +34,7 @@ public class Family {
 		this.name = name;
 	}
 
-	public Family(int id, String name) {
+	public Family(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
