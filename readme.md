@@ -94,3 +94,35 @@ Une fois l'image lancée, on peut récupérer ses informations avec la commande 
 On pourra alors modifier `application.properties` pour rajouter l'adresse IP et les informations de connexion idoines.
 
 Attention, il faudra tout de même relancer la partie "insertion" du script de base de données avant de relancer l'application. Pour cela, on va utiliser pgadmin pour se connecter à la base de données et lancer la partie du script en question.
+
+
+
+## Atelier 3
+
+### Questions
+
+### Quelle est la différence entre un test fonctionnel et un test unitaire ? A quoi sert la couverture de code ?
+
+Un test unitaire est utilisé pour tester les composants de manière individuelle. Contrairement aux tests fonctionnels qui sont destinés à tester des foncitonnalités dans leur globalité.
+
+La couverture de code correspond au pourcentage de code exécuté lors d'un test, on en déduit donc que la couverture de code sera plus importante dans le cas d'un test fonctionnel plutôt que pour un test unitaire.
+
+### Qu’est ce qu’un test de non régression ? à quoi sert-t-il ?
+
+Les Tests de Non Régression (TNR) ont pour but de s’assurer que les modifications et évolutions effectuées par les développeurs lors du dernier sprint n’ont pas entrainé d’effet de bord, en altérant les parties du code non modifiées. Il sert à s'assurer que les modifications du code n'ont pas altéré des parties déjà fonctionnelles n'ayant pas été modifiées.
+
+### Expliquer le principe de développement « test driven » ?
+
+Test-Driven Development (TDD), ou Développements Pilotés par les Tests en français, est une méthode de développement de logiciel, qui consiste à concevoir un logiciel pas à pas, de façon itérative et incrémentale, en écrivant chaque test avant d'écrire le code source et en remaniant le code continuellement.
+
+### Quels intérêts présentent les micros services comparés aux architecture SOA ?
+
+L'interêt d'une architecture par micro-services est, en ayant chaque micro-service indépendant de permettre une meilleure fiabilité, car en cas de problème seul le service incriminé est indisponible. Ce qui permet de maintenir l'application fonctionnelle, juste sans le service dysfonctionnel. Contrairement à une architecture SOA où si un seul composant ne fonctionne pas comme il faut la totalité de l'application sera indisponible.
+
+### Qu’est-ce que docker ? En quoi diffère-t-il des méthodes de virtualisation dites classiques (vmware,virtualbox) ?
+
+Docker est un logiciel de conteneurisation, c'est à dire qu'il permet de déployer des applications dans des conteneurs. Ses principaux avantages par rapport à une solution de virtualisation classique sont sa légèreté, sa compatibilité étendue et ses possibilités de configuration et de déploiement (docker-compose par exemple).
+
+### Qu’est ce que l’intégration continue ? Quels avantages/contraintes présentent cette organisation ?
+
+L'intégration continue correspond au déploiement automatique à chaque modification du code source. Elle demande beaucoup de configuration au préalable mais permet de gagner un temps précieux par la suite.
