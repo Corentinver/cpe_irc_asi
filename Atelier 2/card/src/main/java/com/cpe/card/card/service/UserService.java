@@ -31,7 +31,10 @@ public class UserService{
     	for(int i = 0; i < 5; i++) {
     		int randomInt = ThreadLocalRandom.current().nextInt(0, allCards.size());
     		randomCards.add(allCards.get(randomInt));
+    		allCards.remove(randomInt);
     	}
+    	
+    	
     	
     	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);
     	return userRepository.save(user);
