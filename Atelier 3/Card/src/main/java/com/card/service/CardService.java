@@ -18,7 +18,7 @@ public class CardService {
 	private CardRepository cardRepository;
 	
 	@Autowired
-	private UserService userService;
+	//private UserService userService;
 	
 	public List<Card> getCollectionCardsByUser(int id) {
 		User user = userService.findById(id);
