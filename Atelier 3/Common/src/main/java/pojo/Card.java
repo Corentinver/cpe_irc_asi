@@ -1,4 +1,4 @@
-package com.cpe.card.card.pojo;
+package pojo;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

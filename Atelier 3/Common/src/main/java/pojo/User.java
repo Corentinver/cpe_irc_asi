@@ -1,4 +1,4 @@
-package com.cpe.card.card.pojo;
+package pojo;
 
 import java.io.Serializable;
 import java.util.ArrayList;

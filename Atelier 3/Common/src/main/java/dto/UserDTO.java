@@ -1,4 +1,4 @@
-package com.cpe.card.card.dto;
+package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
