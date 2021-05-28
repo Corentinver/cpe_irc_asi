@@ -1,13 +1,13 @@
-package com.Authentification.Authentification;
+package com.common.Common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AuthentificationApplication {
+public class CommonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthentificationApplication.class, args);
+		SpringApplication.run(CommonApplication.class, args);
 	}
 
 }
