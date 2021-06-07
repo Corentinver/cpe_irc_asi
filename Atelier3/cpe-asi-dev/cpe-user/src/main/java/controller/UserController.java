@@ -24,7 +24,6 @@ public class UserController implements UserRest {
 
 	@Override
 	public ResponseEntity<Double> addMoney(Integer id, double amount) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
