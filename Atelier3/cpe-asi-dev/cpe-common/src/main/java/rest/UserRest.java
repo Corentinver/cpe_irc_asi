@@ -16,7 +16,7 @@ import pojo.User;
 @RequestMapping(value = UserRest.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public interface UserRest {
 
-	public static final String BASE_URL = "/user";
+	public static final String BASE_URL = "/users";
 	public static final String CREATE_USER_URL = "/create";
 	public static final String ADD_MONEY_URL = "/{id}/add/money";
 	public static final String REMOVE_MONEY_URL = "/{id}/remove/money";

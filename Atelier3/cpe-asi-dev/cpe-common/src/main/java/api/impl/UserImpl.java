@@ -48,7 +48,7 @@ public class UserImpl implements UserRest {
 
 	public ResponseEntity<User> getUserById(Integer userId) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
-	    	      .scheme("http").host(hostUser).path(UserRest.ADD_MONEY_URL).buildAndExpand(userId);
+	    	      .scheme("http").host(hostUser).path(UserRest.USER_URL).buildAndExpand(userId);
 		return restTemplate.getForEntity(uriComponents.toUri(), User.class);
 	}
 
