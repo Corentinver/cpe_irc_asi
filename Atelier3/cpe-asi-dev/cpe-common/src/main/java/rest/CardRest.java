@@ -1,11 +1,15 @@
 package rest;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import pojo.Card;
 
 @RequestMapping(value = CardRest.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public interface CardRest {
@@ -19,17 +23,17 @@ public interface CardRest {
     		value = COLLECTION,
     		method = RequestMethod.GET
     )
-    ResponseEntity<?> getCollectionCardsByUser(@PathVariable Integer userId);
+    ResponseEntity<List<Card>> getCollectionCardsByUser(@PathVariable Integer userId);
     
     @RequestMapping(
     		value = SHOP,
     		method = RequestMethod.GET
     )
-    ResponseEntity<?> getShopCardsByUser(@PathVariable Integer userId);
+    ResponseEntity<List<Card>> getShopCardsByUser(@PathVariable Integer userId);
     
     @RequestMapping(
     		value = CARD_URL,
     		method = RequestMethod.GET
     )
-    ResponseEntity<?> getCardById(@PathVariable Integer id);
+    ResponseEntity<Card> getCardById(@PathVariable Integer id);
 }
