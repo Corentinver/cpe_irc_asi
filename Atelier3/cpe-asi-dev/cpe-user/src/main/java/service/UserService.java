@@ -43,7 +43,7 @@ public class UserService{
     }
     
     public Boolean canBuy(int userId, double money) {
-    	/*
+
     	Boolean result = false;
     	
     	Optional<User> user = userRepository.findById(userId);
@@ -52,8 +52,6 @@ public class UserService{
     	}
     	
     	return result;
-    	//return userRepository.hasEnoughMoney(userId, money) != 0;*/
-    	return null;
     }
     
     public void buy(int userId, Card card) {
@@ -85,13 +83,13 @@ public class UserService{
     }
     
     public User findById(int userId) {
-    	/*
+    	
     	Optional<User> user = userRepository.findById(userId);
     	
     	if(user.isPresent()) {
     		return user.get();
     	}
-    	*/
+    	
     	return null;
     }
     
@@ -108,13 +106,21 @@ public class UserService{
     	return null;
     }
 
-	public Double addMoney(Integer userId, double amount) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double addMoney(Integer userId, double amount) {	
+		User user = this.findById(userId);
+		
+		user.setMoney(user.getMoney() + amount);
+		userRepository.save(user);
+		
+		return user.getMoney();
 	}
 
 	public Double removeMoney(Integer userId, double amount) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = this.findById(userId);
+		
+		user.setMoney(user.getMoney() - amount);
+		userRepository.save(user);
+		
+		return user.getMoney();
 	}
 }
