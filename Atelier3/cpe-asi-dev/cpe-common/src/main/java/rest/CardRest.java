@@ -23,17 +23,17 @@ public interface CardRest {
     		value = COLLECTION,
     		method = RequestMethod.GET
     )
-    ResponseEntity<List<Card>> getCollectionCardsByUser(@PathVariable Integer userId);
+    ResponseEntity<List<Card>> getCollectionCardsByUser(@PathVariable(name="userId") Integer userId);
     
     @RequestMapping(
     		value = SHOP,
     		method = RequestMethod.GET
     )
-    ResponseEntity<List<Card>> getShopCardsByUser(@PathVariable Integer userId);
+    ResponseEntity<List<Card>> getShopCardsByUser(@PathVariable(name="userId") Integer userId);
     
     @RequestMapping(
     		value = CARD_URL,
     		method = RequestMethod.GET
     )
-    ResponseEntity<Card> getCardById(@PathVariable Integer id);
+    ResponseEntity<Card> getCardById(@PathVariable(name="id") Integer id);
 }
