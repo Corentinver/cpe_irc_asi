@@ -3,17 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>card</artifactId>
-        <groupId>com.cpe.card</groupId>
+        <artifactId>room</artifactId>
+        <groupId>com.cpe.room</groupId>
         <version>BUILD-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>card-rest-lib</artifactId>
+    <artifactId>room-rest-lib</artifactId>
     <packaging>jar</packaging>
 
-    <name>card-rest-lib</name>
-    <description>Gestion des cartes - REST Librairie</description>
+    <name>market-rest-lib</name>
+    <description>Gestion des rooms - REST Librairie</description>
 
     <dependencies>
         <dependency>
@@ -21,12 +21,6 @@
             <artifactId>common-lib</artifactId>
             <scope>provided</scope>
         </dependency>
-        
-        <dependency>
-			<groupId>com.cpe.card</groupId>
-		    <artifactId>card-rest-lib</artifactId>
-            <version>${com.cpe.common.version}</version>
-		</dependency>
     </dependencies>
 
 </project>
