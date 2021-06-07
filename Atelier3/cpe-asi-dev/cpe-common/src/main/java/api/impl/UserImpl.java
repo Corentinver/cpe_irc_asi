@@ -52,10 +52,10 @@ public class UserImpl implements UserRest {
 		return restTemplate.getForEntity(uriComponents.toUri(), User.class);
 	}
 
-	public ResponseEntity<UserDTO> createUser(UserRegister userRegister) {
+	public ResponseEntity<UserDTO> createUser(UserDTO userDTO) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	    	      .scheme("http").host(hostUser).path(UserRest.CREATE_USER_URL).build();
-		return restTemplate.postForEntity(uriComponents.toUri(), userRegister, UserDTO.class);
+		return restTemplate.postForEntity(uriComponents.toUri(), userDTO, UserDTO.class);
 	}
 
 }

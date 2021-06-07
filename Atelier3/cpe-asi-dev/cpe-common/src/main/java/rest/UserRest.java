@@ -64,7 +64,7 @@ public interface UserRest {
     		value = CREATE_USER_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<UserDTO> createUser(@RequestBody UserRegister userRegister);
+    ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO);
     
 }
 
