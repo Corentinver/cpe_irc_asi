@@ -11,7 +11,9 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import pojo.Card;
+import pojo.User;
 import rest.CardRest;
+import rest.UserRest;
 
 @Component
 public class CardImpl implements CardRest {
@@ -23,7 +25,7 @@ public class CardImpl implements CardRest {
 	
 	public ResponseEntity<List<Card>> getCollectionCardsByUser(Integer userId) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
-	    	      .scheme("http").host(hostCard).path(CardRest.CARD_URL).buildAndExpand(userId);
+	    	      .scheme("http").host(hostCard).path(CardRest.COLLECTION).buildAndExpand(userId);
 		ResponseEntity<Card[]> cards = restTemplate.getForEntity(uriComponents.toUri(), Card[].class);
 		return new ResponseEntity<List<Card>>(Arrays.asList(cards.getBody()), cards.getStatusCode());
 	}
@@ -35,9 +37,9 @@ public class CardImpl implements CardRest {
 		return new ResponseEntity<List<Card>>(Arrays.asList(cards.getBody()), cards.getStatusCode());
 	}
 
-	public ResponseEntity<Card> getCardById(Integer userId) {
+	public ResponseEntity<Card> getCardById(Integer id) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
-	    	      .scheme("http").host(hostCard).path(CardRest.COLLECTION).buildAndExpand(userId);
+	    	      .scheme("http").host(hostCard).path(CardRest.CARD_URL).buildAndExpand(id);
 		return restTemplate.getForEntity(uriComponents.toUri(), Card.class);
 	}
 
