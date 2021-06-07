@@ -14,10 +14,10 @@ import pojo.Card;
 @RequestMapping(value = CardRest.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public interface CardRest {
 
-    String BASE_URL = "/cards";
-    String COLLECTION = "/collection/{userId}";
-    String SHOP = "/shop/{userId}";
-    String CARD_URL = "/{id}";
+	public static final String BASE_URL = "/cards";
+	public static final String COLLECTION = "/collection/{userId}";
+	public static final String SHOP = "/shop/{userId}";
+	public static final String CARD_URL = "/{id}";
     
     @RequestMapping(
     		value = COLLECTION,

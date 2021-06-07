@@ -107,4 +107,14 @@ public class UserService{
     	*/
     	return null;
     }
+
+	public Double addMoney(Integer userId, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Double removeMoney(Integer userId, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

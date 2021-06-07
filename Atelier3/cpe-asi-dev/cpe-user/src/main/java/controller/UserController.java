@@ -24,19 +24,16 @@ public class UserController implements UserRest {
 
 	@Override
 	public ResponseEntity<Double> addMoney(Integer userId, double amount) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<Double>(userService.addMoney(userId, amount), HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<Double> removeMoney(Integer userId, double amount) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<Double>(userService.removeMoney(userId, amount), HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<HttpStatus> addCard(Integer userId, Integer cardId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
