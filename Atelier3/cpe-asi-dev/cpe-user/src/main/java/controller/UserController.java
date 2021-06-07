@@ -23,30 +23,31 @@ public class UserController implements UserRest {
 	private UserService userService;
 
 	@Override
-	public ResponseEntity<Double> addMoney(Integer id, double amount) {
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<Double> removeMoney(Integer id, double amount) {
+	public ResponseEntity<Double> addMoney(Integer userId, double amount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<HttpStatus> addCard(Integer id, Integer cardId) {
+	public ResponseEntity<Double> removeMoney(Integer userId, double amount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<HttpStatus> removeCard(Integer id, Integer cardId) {
+	public ResponseEntity<HttpStatus> addCard(Integer userId, Integer cardId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<Integer> getUserById(Integer id) {
+	public ResponseEntity<HttpStatus> removeCard(Integer userId, Integer cardId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<User> getUserById(Integer userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,5 +57,7 @@ public class UserController implements UserRest {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
