@@ -29,35 +29,35 @@ public interface UserRest {
     		value = ADD_MONEY_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<Double> addMoney(@PathVariable Integer userId, @RequestBody double amount);
+    ResponseEntity<Double> addMoney(@PathVariable(name="id") Integer userId, @RequestBody double amount);
     
     
     @RequestMapping(
     		value = REMOVE_MONEY_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<Double> removeMoney(@PathVariable Integer userId, @RequestBody double amount);
+    ResponseEntity<Double> removeMoney(@PathVariable(name="id") Integer userId, @RequestBody double amount);
     
     
     @RequestMapping(
     		value = ADD_CARD_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<HttpStatus> addCard(@PathVariable Integer userId, @RequestBody Integer cardId);
+    ResponseEntity<HttpStatus> addCard(@PathVariable(name="id") Integer userId, @RequestBody Integer cardId);
     
     
     @RequestMapping(
     		value = REMOVE_CARD_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<HttpStatus> removeCard(@PathVariable Integer userId, @RequestBody Integer cardId);
+    ResponseEntity<HttpStatus> removeCard(@PathVariable(name="id") Integer userId, @RequestBody Integer cardId);
 
     
     @RequestMapping(
     		value = USER_URL,
     		method = RequestMethod.GET
     )
-    ResponseEntity<User> getUserById(@PathVariable Integer userId);
+    ResponseEntity<User> getUserById(@PathVariable(name="id") Integer userId);
     
     
     @RequestMapping(

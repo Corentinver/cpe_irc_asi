@@ -45,7 +45,7 @@ public class UserController implements UserRest {
 
 	@Override
 	public ResponseEntity<User> getUserById(Integer userId) {
-		// TODO Auto-generated method stub
+		System.out.println("TEST");
 		return null;
 	}
 
