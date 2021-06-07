@@ -45,8 +45,7 @@ public class UserController implements UserRest {
 
 	@Override
 	public ResponseEntity<User> getUserById(Integer userId) {
-		System.out.println("TEST");
-		return null;
+		return new ResponseEntity<User>(userService.findById(userId), HttpStatus.OK);
 	}
 
 	@Override
