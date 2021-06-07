@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import pojo.Card;
+import pojo.User;
 import repository.CardRepository;
 
 
@@ -16,10 +18,13 @@ public class CardService {
 	@Autowired
 	private CardRepository cardRepository;
 	
-	//@Autowired
-	//private UserService userService;
-	
 	public List<Card> getCollectionCardsByUser(int id) {
+		/*
+		RestTemplate restTemplate = new RestTemplate();
+		User user = restTemplate.getForObject("/users/" + id, User.class);
+		return user.getCards();
+		*/
+		
 		/*
 		User user = userService.findById(id);
 		return user.getCards();*/
@@ -27,6 +32,15 @@ public class CardService {
 	}
 
 	public List<Card> getShopCardsByUser(int id) {
+		/*
+		RestTemplate restTemplate = new RestTemplate();
+		User user = restTemplate.getForObject("/users/" + id, User.class);
+		List<Card> listOwnedCards = user.getCards();
+		List<Card> listAllCards = cardRepository.findAll();
+		listAllCards.removeAll(listOwnedCards);
+		return listAllCards;
+		*/
+		
 		/*
 		User user = userService.findById(id);
 		List<Card> listOwnedCards = user.getCards();
@@ -37,10 +51,6 @@ public class CardService {
 	}
 	
 	public Card getCardById(int cardId) {
-		/*
-		System.out.println("card id : " + cardId);
-		Optional<Card> optionalCard = cardRepository.findById(cardId);
-		return optionalCard.get();*/
-		return null;
+		return cardRepository.findById(cardId).get();
 	}
 }

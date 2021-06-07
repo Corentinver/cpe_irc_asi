@@ -1,32 +1,28 @@
-package controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
+import rest.CardRest;
 import service.CardService;
 
-
-@CrossOrigin
-@RestController
-@RequestMapping("/cards")
-public class CardController {
-		
-	@Autowired 
+public class CardController implements CardRest {
+	
+	@Autowired
 	CardService cardService;
 
-	@GetMapping("/collection")
-	public ResponseEntity<?> getOwnedCardsByUser(@RequestParam int id) {
+	@Override
+	public ResponseEntity<?> getCollectionCardsByUser(Integer userId) {
+		return new ResponseEntity<>(cardService.getCollectionCardsByUser(userId), HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> getShopCardsByUser(Integer userId) {
+		return new ResponseEntity<>(cardService.getShopCardsByUser(userId), HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> getCardById(Integer id) {
 		return new ResponseEntity<>(cardService.getCollectionCardsByUser(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/shop")
-	public ResponseEntity<?> getUnownedCards(@RequestParam int id) {
-		return new ResponseEntity<>(cardService.getShopCardsByUser(id), HttpStatus.OK);
-	}
 }
