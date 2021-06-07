@@ -20,7 +20,7 @@ public class UserImpl implements UserRest {
 	@Autowired
 	RestTemplate restTemplate;
 
-    public static final String hostUser = "localhost:8081" + MarketRest.BASE_URL;
+    public static final String hostUser = "localhost:8080" + UserRest.BASE_URL;
 	
 	public ResponseEntity<Double> addMoney(Integer userId, double amount) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
