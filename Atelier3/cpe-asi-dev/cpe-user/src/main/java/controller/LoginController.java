@@ -16,8 +16,7 @@ public class LoginController implements LoginRest{
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private MapStructMapperImpl mapper;
+	private MapStructMapperImpl mapper = new MapStructMapperImpl();
 	
 	@Override
 	public ResponseEntity<UserGetDTO> login(UserLoginDTO userLogin) {
@@ -31,7 +30,7 @@ public class LoginController implements LoginRest{
 
 	@Override
 	public ResponseEntity<HttpStatus> logout() {
-		return null;
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

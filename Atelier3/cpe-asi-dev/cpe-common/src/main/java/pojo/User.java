@@ -2,21 +2,36 @@ package pojo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+
+import com.vladmihalcea.hibernate.type.array.IntArrayType;
 
 @Entity(name="User")
 @Table(name = "Users")
+@TypeDefs({
+    @TypeDef(
+        name = "int-array", 
+        typeClass = IntArrayType.class
+    )
+})
 public class User implements Serializable{
 	
     /**
@@ -41,21 +56,24 @@ public class User implements Serializable{
     @Column(name="money")
     private double money;
     
-    @ManyToMany(cascade = { CascadeType.ALL})
-    @JoinTable(
-    		name = "users_card",
-    		joinColumns = @JoinColumn(name = "users_id"),
-    		inverseJoinColumns = @JoinColumn(name = "card_id")
+    @Type(type = "int-array")
+    @Column(
+        name = "cards",
+        columnDefinition = "integer[]"
     )
-    List<Card> cards = new ArrayList<Card>();
+    private Integer[] cards;
     
 
-	public void addCard(Card card) {
-        cards.add(card);
+	public void addCard(Integer cardId) {
+        List<Integer> cardsList = Arrays.asList(cards);
+        cardsList.add(cardId);
+        cards = cardsList.toArray(new Integer[0]);
     }
 
-    public void removeCard(Card card) {
-    	cards.remove(card);
+    public void removeCard(Integer cardId) {
+    	 List<Integer> cardsList = Arrays.asList(cards);
+         cardsList.remove(cardId);
+         cards = cardsList.toArray(new Integer[0]);
     }
 
 	public Integer getUserId() {
@@ -97,16 +115,16 @@ public class User implements Serializable{
 	public void setMoney(double money) {
 		this.money = money;
 	}
-
-	public List<Card> getCards() {
+	
+	public Integer[] getCards() {
 		return cards;
 	}
 
-	public void setCards(List<Card> cards) {
+	public void setCards(Integer[] cards) {
 		this.cards = cards;
 	}
 
-	public User(Integer userId, String password, String surname, String name, double money, List<Card> cards) {
+	public User(Integer userId, String password, String surname, String name, double money, Integer[] cards) {
 		super();
 		this.userId = userId;
 		this.password = password;
@@ -119,6 +137,10 @@ public class User implements Serializable{
 	public User() {
 		
 	}
-    
+	
+	public boolean containsCardId(Integer cardId) {
+		List<Integer> cardList = Arrays.asList(cards);
+		return cardList.contains(cardId);
+	}
     
 }

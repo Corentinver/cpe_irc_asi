@@ -21,9 +21,6 @@ public class UserService{
 
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private MapStructMapperImpl mapper;
     
     public User createUser(User userInfo) {
     	/*
@@ -42,6 +39,7 @@ public class UserService{
     	return userRepository.save(userInfo);
     }
     
+    
     public User findById(int userId) {
     	Optional<User> user = userRepository.findById(userId);
     	
@@ -51,6 +49,7 @@ public class UserService{
     	
     	return null;
     }
+    
     
     public User login(UserLoginDTO userLogin) {
     	Optional<User> user = userRepository.findUserWithSurnameAndPassword(userLogin.getSurname(), userLogin.getPassword());
@@ -78,4 +77,20 @@ public class UserService{
 		
 		return user.getMoney();
 	}
+	
+	public boolean addCard(Integer userId, Integer cardId) {
+		User user = this.findById(userId);
+		user.addCard(cardId);
+		
+		return !userRepository.save(user).containsCardId(cardId);
+	}
+	
+	
+	public boolean removeCard(Integer userId, Integer cardId) {
+		User user = this.findById(userId);
+		user.removeCard(cardId);
+		
+		return !userRepository.save(user).containsCardId(cardId);
+	}
+	
 }

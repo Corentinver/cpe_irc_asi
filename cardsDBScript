@@ -55,3 +55,84 @@ VALUES  (2, 1),
 
 
 -- Le reste de la création des tables et contraintes est géré par Hibernate lors du lancement de l'application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------- Script Micro Service Database -------------
+
+
+
+
+
+
+
+
+
+INSERT INTO Affinity (id, name) 
+VALUES  (nextval('affinity_id_seq'),'A'),
+     	(nextval('affinity_id_seq'),'B'),
+        (nextval('affinity_id_seq'),'C'),
+        (nextval('affinity_id_seq'),'D'),
+        (nextval('affinity_id_seq'),'E');
+
+
+        --
+-- TOC entry 2974 (class 0 OID 24624)
+-- Dependencies: 205
+-- Data for Name: Family; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO Family (id, name) 
+VALUES  (nextval('family_id_seq'),'FamilyA'),
+        (nextval('family_id_seq'),'FamilyB'),
+        (nextval('family_id_seq'),'FamilyC'),
+        (nextval('family_id_seq'),'FamilyD'),
+        (nextval('family_id_seq'),'FamilyE');
+
+--
+-- TOC entry 2970 (class 0 OID 24589)
+-- Dependencies: 201
+-- Data for Name: Card; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO Card (id, name, description, energy, hp, price, path, affinity_id, family_id)
+VALUES  (nextval('card_id_seq'), 'Dracaufeu', 'Gros dragon qui crache du feu', 2, 200, 34567.567, 'path',1, 2),
+        (nextval('card_id_seq'), 'Bulbizarre', 'Une plante avec des pattes', 4, 140, 347.567, 'path',4, 3),
+        (nextval('card_id_seq'), 'Typhlosion', 'Aïe ça brule', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'MewTwo', 'Grille ta master ball pour le chopper (ou ton porte monnaie)', 80, 230, 34999907.567, 'path',4, 4);
+
+
+
+--
+-- TOC entry 2972 (class 0 OID 24609)
+-- Dependencies: 203
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO Users (id, name, surname, password, money, cards)
+VALUES  (nextval('users_id_seq'), 'Vincent', 'Vince', '123456', 99999999999999, '{1,2,3,4}'),
+        (nextval('users_id_seq'), 'Gouy', 'Quentin', 'azerty', 9999, '{1,2,3,4}'),
+        (nextval('users_id_seq'), 'Vergnon', 'Corentin', 'password', 99999999999, '{1,2,3,4}'),
+        (nextval('users_id_seq'), 'Poulard', 'Antonin', 'secure', 0, '{1,2,3,4}');
+
+
+
+-- Le reste de la création des tables et contraintes est géré par Hibernate lors du lancement de l'application.

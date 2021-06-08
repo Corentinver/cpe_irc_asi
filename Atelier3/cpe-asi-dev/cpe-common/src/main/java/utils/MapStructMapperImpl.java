@@ -18,7 +18,7 @@ public class MapStructMapperImpl implements MapStructMapper {
 		user.setSurname(userDTO.getSurname());
 		user.setPassword(userDTO.getPassword());
 		user.setMoney(0);
-		user.setCards(null);
+		//user.setCards(null);
 		
 		return user;
 	}
@@ -37,4 +37,7 @@ public class MapStructMapperImpl implements MapStructMapper {
 		return userMapp;
 	}
 	
+	public MapStructMapperImpl() {
+		
+	}
 }

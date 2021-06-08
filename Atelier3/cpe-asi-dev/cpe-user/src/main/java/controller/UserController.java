@@ -23,8 +23,7 @@ public class UserController implements UserRest {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private MapStructMapperImpl mapper;
+	private MapStructMapperImpl mapper = new MapStructMapperImpl();
 
 	@Override
 	public ResponseEntity<Double> addMoney(Integer userId, double amount) {
@@ -38,13 +37,24 @@ public class UserController implements UserRest {
 
 	@Override
 	public ResponseEntity<HttpStatus> addCard(Integer userId, Integer cardId) {
-		return null;
+		boolean result = userService.addCard(userId, cardId);
+		if(result) {
+			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
 	public ResponseEntity<HttpStatus> removeCard(Integer userId, Integer cardId) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean result = userService.removeCard(userId, cardId);
+		if(result) {
+			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
