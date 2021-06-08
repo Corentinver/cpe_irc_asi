@@ -1,6 +1,7 @@
 package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
@@ -24,7 +25,7 @@ public class MarketService {
 		boolean response = false;
 		ResponseEntity<UserGetDTO> userResponse = userImpl.getUserById(market.getId());
 		ResponseEntity<Card> cardResponse = cardImpl.getCardById(market.getCardId());
-		if(userResponse.getBody() != null && cardResponse.getBody() != null) {
+		if(userResponse.getStatusCode() == HttpStatus.OK && cardResponse.getStatusCode() == HttpStatus.OK) {
 			if(userResponse.getBody().getMoney() >= cardResponse.getBody().getPrice()) {
 				userImpl.addCard(market.getId(), market.getCardId());
 				userImpl.removeMoney(market.getId(), cardResponse.getBody().getPrice());
@@ -39,7 +40,7 @@ public class MarketService {
 		boolean response = false;
 		ResponseEntity<UserGetDTO> userResponse = userImpl.getUserById(market.getId());
 		ResponseEntity<Card> cardResponse = cardImpl.getCardById(market.getCardId());
-		if(userResponse.getBody() != null && cardResponse.getBody() != null) {
+		if(userResponse.getStatusCode() == HttpStatus.OK && cardResponse.getStatusCode() == HttpStatus.OK) {
 			userImpl.removeCard(market.getId(), market.getCardId());
 			userImpl.addMoney(market.getId(), cardResponse.getBody().getPrice());
 			response = true;
