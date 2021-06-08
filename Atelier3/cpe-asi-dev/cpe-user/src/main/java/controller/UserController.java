@@ -58,10 +58,10 @@ public class UserController implements UserRest {
 	}
 
 	@Override
-	public ResponseEntity<UserGetDTO> getUserById(Integer userId) {
+	public ResponseEntity<User> getUserById(Integer userId) {
 		User user = userService.findById(userId);
 		if (user != null) {
-			return new ResponseEntity<UserGetDTO>(mapper.userToUserGetDTO(user), HttpStatus.OK);
+			return new ResponseEntity<User>(user, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

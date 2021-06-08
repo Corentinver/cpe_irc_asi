@@ -23,7 +23,7 @@ public class MarketService {
 
 	public boolean buyCard(MarketDTO market) {
 		boolean response = false;
-		ResponseEntity<UserGetDTO> userResponse = userImpl.getUserById(market.getId());
+		ResponseEntity<User> userResponse = userImpl.getUserById(market.getId());
 		ResponseEntity<Card> cardResponse = cardImpl.getCardById(market.getCardId());
 		if(userResponse.getStatusCode() == HttpStatus.OK && cardResponse.getStatusCode() == HttpStatus.OK) {
 			if(userResponse.getBody().getMoney() >= cardResponse.getBody().getPrice()) {
@@ -38,7 +38,7 @@ public class MarketService {
 
 	public boolean sellCard(MarketDTO market) {
 		boolean response = false;
-		ResponseEntity<UserGetDTO> userResponse = userImpl.getUserById(market.getId());
+		ResponseEntity<User> userResponse = userImpl.getUserById(market.getId());
 		ResponseEntity<Card> cardResponse = cardImpl.getCardById(market.getCardId());
 		if(userResponse.getStatusCode() == HttpStatus.OK && cardResponse.getStatusCode() == HttpStatus.OK) {
 			userImpl.removeCard(market.getId(), market.getCardId());
