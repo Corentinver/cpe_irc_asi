@@ -99,6 +99,12 @@ Attention, il faudra tout de même relancer la partie "insertion" du script de b
 
 ## Atelier 3
 
+Schéma de l'architecture mise en oeuvre :
+
+![Atelier 3 - Architecture (partie 1)](./atelier3_architecture_p1.jpg)
+
+![Atelier 3 - Architecture (partie 2)](./atelier3_architecture_p2.jpg)
+
 ### Questions
 
 ### Quelle est la différence entre un test fonctionnel et un test unitaire ? A quoi sert la couverture de code ?
