@@ -65,13 +65,15 @@ public class User implements Serializable{
     
 
 	public void addCard(Integer cardId) {
-        List<Integer> cardsList = Arrays.asList(cards);
+		List<Integer> cardsList = Arrays.asList(cards);
+   	 	cardsList = new ArrayList(cardsList); // A revoir
         cardsList.add(cardId);
         cards = cardsList.toArray(new Integer[0]);
     }
 
     public void removeCard(Integer cardId) {
     	 List<Integer> cardsList = Arrays.asList(cards);
+    	 cardsList = new ArrayList(cardsList);
          cardsList.remove(cardId);
          cards = cardsList.toArray(new Integer[0]);
     }

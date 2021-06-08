@@ -18,10 +18,10 @@ public interface UserRest {
 
 	public static final String BASE_URL = "/users";
 	public static final String CREATE_USER_URL = "/create";
-	public static final String ADD_MONEY_URL = "/{id}/add/money";
-	public static final String REMOVE_MONEY_URL = "/{id}/remove/money";
-	public static final String ADD_CARD_URL = "/{id}/add/card";
-	public static final String REMOVE_CARD_URL = "/{id}/remove/card";
+	public static final String ADD_MONEY_URL = "/{id}/add/money/{amount}";
+	public static final String REMOVE_MONEY_URL = "/{id}/remove/money/{amount}";
+	public static final String ADD_CARD_URL = "/{id}/add/card/{cardId}";
+	public static final String REMOVE_CARD_URL = "/{id}/remove/card/{cardId}";
 	public static final String USER_URL = "/{id}";
     
     
@@ -29,28 +29,28 @@ public interface UserRest {
     		value = ADD_MONEY_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<Double> addMoney(@PathVariable(name="id") Integer userId, @RequestBody double amount);
+    ResponseEntity<Double> addMoney(@PathVariable(name="id") Integer userId, @PathVariable(name="amount") double amount);
     
     
     @RequestMapping(
     		value = REMOVE_MONEY_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<Double> removeMoney(@PathVariable(name="id") Integer userId, @RequestBody double amount);
+    ResponseEntity<Double> removeMoney(@PathVariable(name="id") Integer userId, @PathVariable(name="amount") double amount);
     
     
     @RequestMapping(
     		value = ADD_CARD_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<HttpStatus> addCard(@PathVariable(name="id") Integer userId, @RequestBody Integer cardId);
+    ResponseEntity<HttpStatus> addCard(@PathVariable(name="id") Integer userId, @PathVariable(name="cardId") Integer cardId);
     
     
     @RequestMapping(
     		value = REMOVE_CARD_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<HttpStatus> removeCard(@PathVariable(name="id") Integer userId, @RequestBody Integer cardId);
+    ResponseEntity<HttpStatus> removeCard(@PathVariable(name="id") Integer userId, @PathVariable(name="cardId") Integer cardId);
 
     
     @RequestMapping(

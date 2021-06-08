@@ -18,9 +18,6 @@ public class UserImpl implements UserRest {
 
 	@Autowired
 	RestTemplate restTemplate;
-	
-	@Autowired
-	public MapStructMapperImpl mapper;
 
     public static final String hostUser = "localhost:8080" + UserRest.BASE_URL;
 	
