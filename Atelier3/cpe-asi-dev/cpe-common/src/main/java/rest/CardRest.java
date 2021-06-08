@@ -36,4 +36,10 @@ public interface CardRest {
     		method = RequestMethod.GET
     )
     ResponseEntity<Card> getCardById(@PathVariable(name="id") Integer id);
+    
+    @RequestMapping(
+    		value = "",
+    		method = RequestMethod.GET
+    )
+    ResponseEntity<List<Card>> getAllCards();
 }

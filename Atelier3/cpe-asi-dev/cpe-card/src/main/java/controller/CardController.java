@@ -34,4 +34,8 @@ public class CardController implements CardRest {
 		return new ResponseEntity<Card>(cardService.getCardById(id), HttpStatus.OK);
 	}
 	
+	@Override
+	public ResponseEntity<List<Card>> getAllCards() {
+		return new ResponseEntity<List<Card>>(cardService.getAllCards(), HttpStatus.OK);
+	}
 }

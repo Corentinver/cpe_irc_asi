@@ -47,6 +47,10 @@ public class CardService {
 		return cardRepository.findById(id).get();
 	}
 	
+	public List<Card> getAllCards() {
+		return cardRepository.findAll();
+	}
+	
 	private List<Card> getCardsFromUser(User user){
 		List<Card> cards = new ArrayList<Card>();
 		for(Integer cardId : user.getCards()) {

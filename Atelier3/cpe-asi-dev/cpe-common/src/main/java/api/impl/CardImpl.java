@@ -43,4 +43,9 @@ public class CardImpl implements CardRest {
 		return restTemplate.getForEntity(uriComponents.toUri(), Card.class);
 	}
 
+	public ResponseEntity<List<Card>> getAllCards() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
