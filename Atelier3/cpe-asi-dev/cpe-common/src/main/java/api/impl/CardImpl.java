@@ -10,8 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import pojo.Card;
-import pojo.User;
+import pojo.card.Card;
+import pojo.user.User;
 import rest.CardRest;
 import rest.UserRest;
 

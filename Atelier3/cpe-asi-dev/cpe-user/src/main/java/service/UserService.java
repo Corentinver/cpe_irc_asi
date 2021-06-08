@@ -11,8 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 import dto.UserGetDTO;
 import dto.UserLoginDTO;
-import pojo.Card;
-import pojo.User;
+import pojo.card.Card;
+import pojo.user.User;
 import repository.UserRepository;
 import rest.CardRest;
 import rest.UserRest;

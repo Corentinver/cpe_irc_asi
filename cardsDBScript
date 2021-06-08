@@ -84,7 +84,7 @@ VALUES  (2, 1),
 
 
 
-
+------------- Script Database postgres_card -------------
 
 INSERT INTO Affinity (id, name) 
 VALUES  (nextval('affinity_id_seq'),'A'),
@@ -126,6 +126,8 @@ VALUES  (nextval('card_id_seq'), 'Dracaufeu', 'Gros dragon qui crache du feu', 2
 -- Dependencies: 203
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+
+------------- Script Database postgres_user -------------
 
 INSERT INTO Users (id, name, surname, password, money, cards)
 VALUES  (nextval('users_id_seq'), 'Vincent', 'Vince', '123456', 99999999999999, '{1,2,3,4}'),

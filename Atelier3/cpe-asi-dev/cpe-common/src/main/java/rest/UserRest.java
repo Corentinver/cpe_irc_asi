@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import dto.UserGetDTO;
 import dto.UserPostDTO;
-import pojo.User;
+import pojo.user.User;
 
 
 @RequestMapping(value = UserRest.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)

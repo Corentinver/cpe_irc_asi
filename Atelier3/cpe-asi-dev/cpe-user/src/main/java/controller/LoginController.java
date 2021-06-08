@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dto.UserGetDTO;
 import dto.UserLoginDTO;
-import pojo.User;
+import pojo.user.User;
 import rest.LoginRest;
 import service.UserService;
 import utils.MapStructMapperImpl;

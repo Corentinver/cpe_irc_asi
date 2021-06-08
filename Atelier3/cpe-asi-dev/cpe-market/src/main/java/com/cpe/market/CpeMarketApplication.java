@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EntityScan("pojo")
 @ComponentScan(basePackages = {"pojo", "service", "controller", "rest"})
 public class CpeMarketApplication {
 

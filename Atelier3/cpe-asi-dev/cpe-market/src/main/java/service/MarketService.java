@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import dto.MarketDTO;
-import pojo.User;
-import pojo.Card;
+import pojo.user.User;
+import pojo.card.Card;
 import rest.UserRest;
 import rest.CardRest;
 

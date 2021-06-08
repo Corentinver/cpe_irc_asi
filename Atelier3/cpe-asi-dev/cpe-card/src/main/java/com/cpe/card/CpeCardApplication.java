@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("repository")
-@EntityScan("pojo")
+@EntityScan({"pojo.card"})
 @ComponentScan(basePackages = {"pojo", "repository", "service", "controller", "rest"})
 public class CpeCardApplication {
 

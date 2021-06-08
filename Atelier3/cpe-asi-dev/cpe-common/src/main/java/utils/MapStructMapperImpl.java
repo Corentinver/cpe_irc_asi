@@ -2,7 +2,7 @@ package utils;
 
 import dto.UserGetDTO;
 import dto.UserPostDTO;
-import pojo.User;
+import pojo.user.User;
 
 public class MapStructMapperImpl implements MapStructMapper {
 
