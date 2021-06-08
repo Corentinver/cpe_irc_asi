@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dto.UserDTO;
-import dto.UserRegister;
+import dto.UserGetDTO;
+import dto.UserLoginDTO;
 import pojo.User;
 
 
@@ -29,7 +29,7 @@ public interface LoginRest {
     		value = USER_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<UserDTO> login(@RequestBody UserRegister userRegister);
+    ResponseEntity<UserGetDTO> login(@RequestBody UserLoginDTO userLogin);
     
     
     @RequestMapping(

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dto.UserDTO;
-import dto.UserRegister;
+import dto.UserGetDTO;
+import dto.UserPostDTO;
 import pojo.User;
 
 
@@ -57,14 +57,14 @@ public interface UserRest {
     		value = USER_URL,
     		method = RequestMethod.GET
     )
-    ResponseEntity<User> getUserById(@PathVariable(name="id") Integer userId);
+    ResponseEntity<UserGetDTO> getUserById(@PathVariable(name="id") Integer userId);
     
     
     @RequestMapping(
     		value = CREATE_USER_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO);
+    ResponseEntity<UserGetDTO> createUser(@RequestBody UserPostDTO userPostDTO);
     
 }
 

@@ -7,11 +7,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
 
-import dto.UserDTO;
-import dto.UserRegister;
+import dto.UserGetDTO;
+import dto.UserLoginDTO;
 import pojo.Card;
 import pojo.User;
 import repository.UserRepository;
+import utils.MapStructMapperImpl;
 
 import java.util.Optional;
 
@@ -21,8 +22,8 @@ public class UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
-	//@Autowired
-	//private CardRepository cardRepository;
+	@Autowired
+	private MapStructMapperImpl mapper;
     
     public User createUser(User userInfo) {
     	/*
@@ -37,53 +38,11 @@ public class UserService{
     	
     	
     	
-    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);
-    	return userRepository.save(user);*/
-    	return null;
-    }
-    
-    public Boolean canBuy(int userId, double money) {
-
-    	Boolean result = false;
-    	
-    	Optional<User> user = userRepository.findById(userId);
-    	if(user.isPresent() && user.get().getMoney() >= money) {
-    		result = true;
-    	}
-    	
-    	return result;
-    }
-    
-    public void buy(int userId, Card card) {
-    	/*
-    	Optional<User> user = userRepository.findById(userId);
-    	if(user.isPresent()) {
-    		user.get().setMoney(user.get().getMoney() - card.getPrice());
-    		user.get().addCard(card);
-    		userRepository.save(user.get());
-    	}
-    	
-    	//return user.get();
-    	//userRepository.pickUpMoney(userId, money);
-    	 *
-    	 */
-    }
-    
-    public void sell(int userId, Card card) {
-    	/*
-    	Optional<User> user = userRepository.findById(userId);
-    	if(user.isPresent()) {
-    		user.get().setMoney(user.get().getMoney() + card.getPrice());
-    		user.get().removeCard(card);
-    		userRepository.save(user.get());
-    	}
-    	//userRepository.addMoney(userId, money);
-    	 * 
-    	 */
+    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);*/
+    	return userRepository.save(userInfo);
     }
     
     public User findById(int userId) {
-    	
     	Optional<User> user = userRepository.findById(userId);
     	
     	if(user.isPresent()) {
@@ -93,16 +52,12 @@ public class UserService{
     	return null;
     }
     
-    public UserDTO login(UserRegister userRegister) {
-    	/*
-    	Optional<User> user = userRepository.findUserWithSurnameAndPassword(userRegister.getSurname(), userRegister.getPassword());
-    	UserDTO userDTO = null;
+    public User login(UserLoginDTO userLogin) {
+    	Optional<User> user = userRepository.findUserWithSurnameAndPassword(userLogin.getSurname(), userLogin.getPassword());
     	if(user.isPresent()) {
-    		userDTO = new UserDTO(user.get().getUserId(), user.get().getSurname(), user.get().getPassword(), user.get().getMoney());
+    		return user.get();
     	}
     	
-    	return userDTO;
-    	*/
     	return null;
     }
 

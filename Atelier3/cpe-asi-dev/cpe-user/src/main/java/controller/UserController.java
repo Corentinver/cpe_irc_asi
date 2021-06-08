@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.UserDTO;
-import dto.UserRegister;
+import dto.UserGetDTO;
+import dto.UserPostDTO;
 import pojo.User;
 import rest.UserRest;
 import service.UserService;
+import utils.MapStructMapperImpl;
 
 @CrossOrigin
 @RestController
@@ -21,6 +22,9 @@ public class UserController implements UserRest {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MapStructMapperImpl mapper;
 
 	@Override
 	public ResponseEntity<Double> addMoney(Integer userId, double amount) {
@@ -44,19 +48,24 @@ public class UserController implements UserRest {
 	}
 
 	@Override
-	public ResponseEntity<User> getUserById(Integer userId) {
+	public ResponseEntity<UserGetDTO> getUserById(Integer userId) {
 		User user = userService.findById(userId);
 		if (user != null) {
-			return new ResponseEntity<User>(user, HttpStatus.OK);
+			return new ResponseEntity<UserGetDTO>(mapper.userToUserGetDTO(user), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@Override
-	public ResponseEntity<UserDTO> createUser(UserRegister userRegister) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<UserGetDTO> createUser(UserPostDTO userPostDTO) {
+		User user = mapper.userPostDTOtoUser(userPostDTO);
+		User userCreated = userService.createUser(user);
+		if (userCreated != null) {
+			return new ResponseEntity<UserGetDTO>(mapper.userToUserGetDTO(userCreated), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 

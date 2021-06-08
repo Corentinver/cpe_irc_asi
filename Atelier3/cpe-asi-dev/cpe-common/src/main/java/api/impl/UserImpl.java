@@ -8,17 +8,19 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import dto.UserDTO;
-import dto.UserRegister;
-import pojo.User;
-import rest.MarketRest;
+import dto.UserGetDTO;
+import dto.UserPostDTO;
 import rest.UserRest;
+import utils.MapStructMapperImpl;
 
 @Component
 public class UserImpl implements UserRest {
 
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	public MapStructMapperImpl mapper;
 
     public static final String hostUser = "localhost:8080" + UserRest.BASE_URL;
 	
@@ -46,16 +48,16 @@ public class UserImpl implements UserRest {
 		return restTemplate.postForEntity(uriComponents.toUri(), cardId, HttpStatus.class);
 	}
 
-	public ResponseEntity<User> getUserById(Integer userId) {
+	public ResponseEntity<UserGetDTO> getUserById(Integer userId) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	    	      .scheme("http").host(hostUser).path(UserRest.USER_URL).buildAndExpand(userId);
-		return restTemplate.getForEntity(uriComponents.toUri(), User.class);
+		return restTemplate.getForEntity(uriComponents.toUri(), UserGetDTO.class);
 	}
 
-	public ResponseEntity<UserDTO> createUser(UserDTO userDTO) {
+	public ResponseEntity<UserGetDTO> createUser(UserPostDTO user) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	    	      .scheme("http").host(hostUser).path(UserRest.CREATE_USER_URL).build();
-		return restTemplate.postForEntity(uriComponents.toUri(), userDTO, UserDTO.class);
+		return restTemplate.postForEntity(uriComponents.toUri(), user, UserGetDTO.class);
 	}
 
 }

@@ -7,8 +7,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import dto.UserDTO;
-import dto.UserRegister;
+import dto.UserGetDTO;
+import dto.UserLoginDTO;
 import rest.LoginRest;
 
 public class LoginImpl implements LoginRest{
@@ -18,10 +18,10 @@ public class LoginImpl implements LoginRest{
 	
     public static final String hostMarket = "localhost:8080" + LoginRest.BASE_URL;
 
-	public ResponseEntity<UserDTO> login(UserRegister userRegister) {
+	public ResponseEntity<UserGetDTO> login(UserLoginDTO userLogin) {
 		UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	    	      .scheme("http").host(hostMarket).path(LoginRest.LOGIN_USER_URL).build();
-		return restTemplate.postForEntity(uriComponents.toUri(), userRegister, UserDTO.class);
+		return restTemplate.postForEntity(uriComponents.toUri(), userLogin, UserGetDTO.class);
 	}
 
 	public ResponseEntity<HttpStatus> logout() {
