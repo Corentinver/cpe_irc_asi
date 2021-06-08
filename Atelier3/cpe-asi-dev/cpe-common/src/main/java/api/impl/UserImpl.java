@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import dto.UserGetDTO;
 import dto.UserPostDTO;
+import pojo.User;
 import rest.UserRest;
 import utils.MapStructMapperImpl;
 
@@ -45,10 +46,10 @@ public class UserImpl implements UserRest {
 		return restTemplate.postForEntity(uriComponents.toUri(), cardId, HttpStatus.class);
 	}
 
-	public ResponseEntity<UserGetDTO> getUserById(Integer userId) {
+	public ResponseEntity<User> getUserById(Integer userId) {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	    	      .scheme("http").host(hostUser).path(UserRest.USER_URL).buildAndExpand(userId);
-		return restTemplate.getForEntity(uriComponents.toUri(), UserGetDTO.class);
+		return restTemplate.getForEntity(uriComponents.toUri(), User.class);
 	}
 
 	public ResponseEntity<UserGetDTO> createUser(UserPostDTO user) {

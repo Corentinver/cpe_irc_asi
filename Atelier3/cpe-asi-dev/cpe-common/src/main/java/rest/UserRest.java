@@ -57,7 +57,7 @@ public interface UserRest {
     		value = USER_URL,
     		method = RequestMethod.GET
     )
-    ResponseEntity<UserGetDTO> getUserById(@PathVariable(name="id") Integer userId);
+    ResponseEntity<User> getUserById(@PathVariable(name="id") Integer userId);
     
     
     @RequestMapping(
