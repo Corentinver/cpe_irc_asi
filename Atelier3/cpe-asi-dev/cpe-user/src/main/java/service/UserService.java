@@ -2,16 +2,20 @@ package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import dto.UserGetDTO;
 import dto.UserLoginDTO;
 import pojo.Card;
 import pojo.User;
 import repository.UserRepository;
+import rest.CardRest;
+import rest.UserRest;
 import utils.MapStructMapperImpl;
 
 import java.util.Optional;
@@ -21,21 +25,19 @@ public class UserService{
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	private RestTemplate restTemplate = new RestTemplate();
     
     public User createUser(User userInfo) {
-    	/*
-    	List<Card> allCards = cardRepository.findAll();
+    	String url = CardRest.SERVER + CardRest.BASE_URL;
+		
+    	List<Card> allCards = Arrays.asList(restTemplate.getForObject(url, Card[].class));
     	List<Card> randomCards = new ArrayList<Card>();
-
     	for(int i = 0; i < 5; i++) {
     		int randomInt = ThreadLocalRandom.current().nextInt(0, allCards.size());
-    		randomCards.add(allCards.get(randomInt));
-    		allCards.remove(randomInt);
+    		userInfo.addCard(allCards.get(randomInt).getId());
     	}
     	
-    	
-    	
-    	User user = new User(null, userInfo.getPassword(), userInfo.getSurname(), userInfo.getName(), 5000, randomCards);*/
     	return userRepository.save(userInfo);
     }
     
