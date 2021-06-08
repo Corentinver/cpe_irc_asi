@@ -18,6 +18,8 @@ public interface CardRest {
 	public static final String COLLECTION = "/collection/{userId}";
 	public static final String SHOP = "/shop/{userId}";
 	public static final String CARD_URL = "/{id}";
+	
+	public static final String SERVER = "http://localhost:8082";
     
     @RequestMapping(
     		value = COLLECTION,
