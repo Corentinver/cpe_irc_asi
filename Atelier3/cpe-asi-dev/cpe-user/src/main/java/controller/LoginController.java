@@ -3,6 +3,7 @@ package controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 import dto.UserGetDTO;
 import dto.UserLoginDTO;
@@ -11,6 +12,7 @@ import rest.LoginRest;
 import service.UserService;
 import utils.MapStructMapperImpl;
 
+@RestController
 public class LoginController implements LoginRest{
 
 	@Autowired

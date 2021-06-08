@@ -13,20 +13,15 @@ import dto.UserLoginDTO;
 import pojo.User;
 
 
-@RequestMapping(value = UserRest.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = LoginRest.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public interface LoginRest {
 
 	public static final String BASE_URL = "";
 	public static final String LOGIN_USER_URL = "/login";
 	public static final String LOGOUT_USER_URL = "/logout";
-	public static final String REMOVE_MONEY_URL = "/{id}/remove/money";
-	public static final String ADD_CARD_URL = "/{id}/add/card";
-	public static final String REMOVE_CARD_URL = "/{id}/remove/card";
-	public static final String USER_URL = "/{id}";
-    
     
     @RequestMapping(
-    		value = USER_URL,
+    		value = LOGIN_USER_URL,
     		method = RequestMethod.POST
     )
     ResponseEntity<UserGetDTO> login(@RequestBody UserLoginDTO userLogin);
