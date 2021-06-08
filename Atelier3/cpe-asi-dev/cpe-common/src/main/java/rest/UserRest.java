@@ -23,6 +23,8 @@ public interface UserRest {
 	public static final String ADD_CARD_URL = "/{id}/add/card/{cardId}";
 	public static final String REMOVE_CARD_URL = "/{id}/remove/card/{cardId}";
 	public static final String USER_URL = "/{id}";
+	
+	public static final String SERVER = "http://localhost:8080";
     
     
     @RequestMapping(
