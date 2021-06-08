@@ -30,36 +30,25 @@ public class MarketService {
 
 			response = true;
 		}
-		
-		/*
-		boolean response = false;
-		ResponseEntity<User> userResponse = userImpl.getUserById(market.getId());
-		ResponseEntity<Card> cardResponse = cardImpl.getCardById(market.getCardId());
-		if(userResponse.getStatusCode() == HttpStatus.OK && cardResponse.getStatusCode() == HttpStatus.OK) {
-			if(userResponse.getBody().getMoney() >= cardResponse.getBody().getPrice()) {
-				userImpl.addCard(market.getId(), market.getCardId());
-				userImpl.removeMoney(market.getId(), cardResponse.getBody().getPrice());
-				response = true;
-			}
-		}
-		*/
-		
+
 		return response;
 	}
 
 	public boolean sellCard(MarketDTO market) {
 		boolean response = false;
 		
-		/*
-		ResponseEntity<User> userResponse = userImpl.getUserById(market.getId());
-		ResponseEntity<Card> cardResponse = cardImpl.getCardById(market.getCardId());
-		if(userResponse.getStatusCode() == HttpStatus.OK && cardResponse.getStatusCode() == HttpStatus.OK) {
-			userImpl.removeCard(market.getId(), market.getCardId());
-			userImpl.addMoney(market.getId(), cardResponse.getBody().getPrice());
-			response = true;
-		}
-		*/
+		User user = this.getUser(market.getId());
+		Card card = this.getCard(market.getCardId());
 		
+		Integer userId = user.getUserId();
+		Integer cardId = card.getId();
+		Double amount = card.getPrice();
+
+		this.changeUserCard(userId, cardId, "REMOVE");
+		this.changeUserMoney(userId, amount, "ADD");
+
+		response = true;
+
 		return response;
 	}
 
