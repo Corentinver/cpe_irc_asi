@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EntityScan("pojo")
-@ComponentScan(basePackages = {"pojo", "repository", "service", "controller", "rest"})
+@ComponentScan(basePackages = {"pojo", "service", "controller", "rest"})
 public class CpeMarketApplication {
 
 	public static void main(String[] args) {

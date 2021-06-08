@@ -1,0 +1,19 @@
+<div class="row-layout width-100 justify-between">
+    <span>{{ getMonnaie() }}</span>
+    <span>{{ getSurname() }}</span>
+</div>
+
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Acheter">
+      <app-buy></app-buy>
+  </mat-tab>
+  <mat-tab label="Vendre">
+    
+    <ng-template matTabContent>
+      <app-sell></app-sell>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Jouer">
+    En cours de développement
+  </mat-tab>
+</mat-tab-group>
