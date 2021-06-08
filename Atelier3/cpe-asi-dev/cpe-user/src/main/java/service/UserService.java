@@ -60,7 +60,11 @@ public class UserService{
     	return null;
     }
 
-	public Double addMoney(Integer userId, double amount) {	
+	public Double addMoney(Integer userId, double amount) {
+		if(amount <= 0) {
+			return null;
+		}
+		
 		User user = this.findById(userId);
 		
 		user.setMoney(user.getMoney() + amount);
@@ -70,6 +74,10 @@ public class UserService{
 	}
 
 	public Double removeMoney(Integer userId, double amount) {
+		if(amount <= 0) {
+			return null;
+		}
+		
 		User user = this.findById(userId);
 		
 		user.setMoney(user.getMoney() - amount);
@@ -79,15 +87,35 @@ public class UserService{
 	}
 	
 	public boolean addCard(Integer userId, Integer cardId) {
+		if(cardId <= 0) {
+			return false;
+		}
+		
 		User user = this.findById(userId);
+		
+		// Si l'utilisateur possède déjà la carte.
+		if(user.containsCardId(cardId)) {
+			return false;
+		}
+		
 		user.addCard(cardId);
 		
-		return !userRepository.save(user).containsCardId(cardId);
+		return userRepository.save(user).containsCardId(cardId);
 	}
 	
 	
 	public boolean removeCard(Integer userId, Integer cardId) {
+		if(cardId <= 0) {
+			return false;
+		}
+		
 		User user = this.findById(userId);
+		
+		// Si l'utilisateur ne possède pas la carte.
+		if(!user.containsCardId(cardId)) {
+			return false;
+		}
+		
 		user.removeCard(cardId);
 		
 		return !userRepository.save(user).containsCardId(cardId);
