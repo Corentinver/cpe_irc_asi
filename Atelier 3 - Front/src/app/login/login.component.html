@@ -1,0 +1,36 @@
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="S'inscrire">
+        <form [formGroup]="registerForm" (ngSubmit)="register()" class="column-layout">
+            <mat-form-field appearance="legacy">
+                <mat-label>Nom</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Surnom</mat-label>
+                <input matInput formControlName="surname">
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput formControlName="password">
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Vérification du mot de passe</mat-label>
+                <input matInput formControlName="repassword">
+            </mat-form-field>
+            <button type="submit" [disabled]="!registerForm.valid" mat-raised-button >S'inscrire</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Se connecter" class="column-layout">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="column-layout">
+            <mat-form-field appearance="legacy">
+                <mat-label>Surnom</mat-label>
+                <input matInput formControlName="surname">
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password">
+            </mat-form-field>
+            <button type="submit" mat-raised-button>Se connecter</button>
+        </form>
+    </mat-tab>
+</mat-tab-group>
