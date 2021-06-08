@@ -99,11 +99,37 @@ Attention, il faudra tout de même relancer la partie "insertion" du script de b
 
 ## Atelier 3
 
-Schéma de l'architecture mise en oeuvre :
+### Architecture
 
-![Atelier 3 - Architecture (partie 1)](./atelier3_architecture_p1.jpg)
+Schéma de l'architecture mise en oeuvre (globale puis zoom sur les différentes parties):
 
-![Atelier 3 - Architecture (partie 2)](./atelier3_architecture_p2.jpg)
+#### Architecture (globale)
+
+![Atelier 3 - Architecture (globale)](./atelier3_architecture_globale.jpg)
+
+#### Architecture (front)
+
+![Atelier 3 - Architecture (front)](./atelier3_architecture_front.jpg)
+
+#### Architecture (microservice Market)
+
+![Atelier 3 - Architecture (microservice Market)](./atelier3_architecture_ms1.jpg)
+
+#### Architecture (microservice Card)
+
+![Atelier 3 - Architecture (microservice Card)](./atelier3_architecture_ms2.jpg)
+
+#### Architecture (microservice User)
+
+![Atelier 3 - Architecture (microservice User)](./atelier3_architecture_ms3.jpg)
+
+#### Architecture (microservice Token)
+
+![Atelier 3 - Architecture (microservice Token)](./atelier3_architecture_ms4.jpg)
+
+#### Architecture (microservice Room)
+
+![Atelier 3 - Architecture (microservice Room)](./atelier3_architecture_ms5.jpg)
 
 ### Questions
 
