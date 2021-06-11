@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("repository")
-@EntityScan("pojo")
+@EntityScan("pojo.user")
 @ComponentScan(basePackages = {"pojo", "repository", "service", "controller"})
 public class CpeUserApplication {
 

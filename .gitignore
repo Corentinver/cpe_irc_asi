@@ -1,2 +1,6 @@
 
 card/src/main/resources/application.properties
+Atelier3/cpe-asi-dev/cpe-market/src/main/resources/application.properties
+Atelier3/cpe-asi-dev/cpe-card/src/main/resources/application.properties
+Atelier3/cpe-asi-dev/cpe-room/src/main/resources/application.properties
+Atelier3/cpe-asi-dev/cpe-user/src/main/resources/application.properties

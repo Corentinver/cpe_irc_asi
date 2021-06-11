@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import pojo.Card;
-import pojo.User;
+import pojo.card.Card;
+import pojo.user.User;
 import repository.CardRepository;
 import rest.UserRest;
 

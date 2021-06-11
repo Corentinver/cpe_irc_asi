@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import pojo.User;
+import pojo.user.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {

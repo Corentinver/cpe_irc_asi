@@ -10,7 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import dto.UserGetDTO;
 import dto.UserPostDTO;
-import pojo.User;
+import pojo.user.User;
 import rest.UserRest;
 import utils.MapStructMapperImpl;
 
