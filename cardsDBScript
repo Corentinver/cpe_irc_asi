@@ -1,3 +1,8 @@
+------------- Script Monolite Service Database -------------
+
+
+
+
 INSERT INTO Affinity (id, name) 
 VALUES  (nextval('affinity_id_seq'),'A'),
      	(nextval('affinity_id_seq'),'B'),
