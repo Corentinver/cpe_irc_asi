@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import pojo.card.Affinity;
+
 public class AffinityTest {
 
 	@Test
