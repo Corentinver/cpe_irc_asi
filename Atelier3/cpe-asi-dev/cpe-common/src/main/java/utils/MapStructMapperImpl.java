@@ -28,8 +28,8 @@ public class MapStructMapperImpl implements MapStructMapper {
 		user.setName(userDTO.getName());
 		user.setSurname(userDTO.getSurname());
 		user.setPassword(userDTO.getPassword());
-		user.setMoney(0);
-		
+		user.setMoney(50000);
+		user.setCards(new Integer[] {});
 		return user;
 	}
 
