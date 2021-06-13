@@ -24,6 +24,9 @@ public class RoomDTO {
 	
 	@JsonProperty("bet")
 	private Double bet;
+	
+	@JsonProperty("users")
+	private Integer[] users;
 
 	public Integer getId() {
 		return id;
@@ -49,14 +52,24 @@ public class RoomDTO {
 		this.bet = bet;
 	}
 
-	public RoomDTO(Integer id, String name, Double bet) {
+	public Integer[] getUsers() {
+		return users;
+	}
+
+	public void setUsers(Integer[] users) {
+		this.users = users;
+	}
+
+	public RoomDTO(Integer id, String name, Double bet, Integer[] users) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.bet = bet;
+		this.users = users;
 	}
 	
-	
-	
+	public RoomDTO() {
+		
+	}
 	
 }

@@ -27,7 +27,7 @@ public interface RoomRest {
 	 */
 	public static final String BASE_URL = "/room";
     public static final String CREATE_ROOM_URL = "/create";
-    public static final String JOIN_ROOM_URL = "/join/{id}";
+    public static final String JOIN_ROOM_URL = "/{id}/join/{roomId}";
     public static final String GET_ROOM_URL = "/rooms";
     
     
@@ -44,14 +44,14 @@ public interface RoomRest {
     
 	/**
 	 * Action pour rejoindre une salle
-	 * @param roomId
+	 * @param userId, roomId
 	 * @return HttpStatus accès à la room ok
 	 */
     @RequestMapping(
     		value = JOIN_ROOM_URL,
     		method = RequestMethod.POST
     )
-    ResponseEntity<HttpStatus> joinRoom(@PathVariable Integer roomId);
+    ResponseEntity<HttpStatus> joinRoom(@PathVariable(name="id") Integer userId, @PathVariable(name="roomId") Integer roomId);
     
 	/**
 	 * Récupération des salles de jeux de l'appplication

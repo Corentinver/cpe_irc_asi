@@ -18,7 +18,7 @@ public class RoomController implements RoomRest{
 	}
 
 	@Override
-	public ResponseEntity<HttpStatus> joinRoom(Integer roomId) {
+	public ResponseEntity<HttpStatus> joinRoom(Integer userId, Integer roomId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
