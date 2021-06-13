@@ -18,7 +18,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 // Dossier pour nos tables de la base de données
 @EntityScan({"pojo.card"})
 // Dossier à scan
-@ComponentScan(basePackages = {"pojo", "repository", "service", "controller", "rest"})
+@ComponentScan(basePackages = {"config", "pojo", "repository", "service", "controller", "rest", "jms"})
 public class CpeCardApplication {
 
 	public static void main(String[] args) {

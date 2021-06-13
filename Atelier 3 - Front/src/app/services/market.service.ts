@@ -20,7 +20,7 @@ export class MarketService {
 
   sellCard(idCard: number, idUser: number): Observable<any> {
     return this.httpClient.post(
-      `http://localhost:8081/market/sell}`, 
+      `http://localhost:8081/market/sell`, 
       {"id" : idUser, "cardId" : idCard}
     );
   }

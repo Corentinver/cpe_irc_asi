@@ -19,7 +19,9 @@ import { MenuComponent } from './menu/menu.component';
 import { SellComponent } from './sell/sell.component';
 import { AuthGuard } from './auth-guard';
 import { ListCardsComponent } from './menu/list-cards/list-cards.component';
-
+import { RxStompService } from '@stomp/ng2-stompjs';
+import { CardShopWebSocketService } from './services/card-shop-web-socket.service';
+import { CardCollectionWebSocketService } from './services/card-collection-web-socket.service';
 
 
 @NgModule({
@@ -44,7 +46,12 @@ import { ListCardsComponent } from './menu/list-cards/list-cards.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    RxStompService,
+    CardShopWebSocketService,
+    CardCollectionWebSocketService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

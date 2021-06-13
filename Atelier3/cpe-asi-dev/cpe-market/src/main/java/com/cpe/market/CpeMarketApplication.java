@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 //Dossier à scan
-@ComponentScan(basePackages = {"pojo", "service", "controller", "rest"})
+@ComponentScan(basePackages = {"config", "pojo", "service", "controller", "rest"})
 public class CpeMarketApplication {
 
 	public static void main(String[] args) {
