@@ -1,7 +1,11 @@
 Si vous voulez test le code, il faut
 Install docker
 Récupérer l'image postgres
+docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres
+
+
 Récupérer l'image dgpage/pgadmin4
+docker run -p 80:80 --link some-postgres -e "PGADMIN_DEFAULT_EMAIL=email@domain.com" -e "PGADMIN_DEFAULT_PASSWORD=postgres" -d dpage/pgadmin4
 
 Ajouter via pgadmin, les database suivantes : 
 postgres_user
