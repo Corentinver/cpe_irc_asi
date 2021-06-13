@@ -117,7 +117,22 @@ INSERT INTO Card (id, name, description, energy, hp, price, path, affinity_id, f
 VALUES  (nextval('card_id_seq'), 'Dracaufeu', 'Gros dragon qui crache du feu', 2, 200, 34567.567, 'path',1, 2),
         (nextval('card_id_seq'), 'Bulbizarre', 'Une plante avec des pattes', 4, 140, 347.567, 'path',4, 3),
         (nextval('card_id_seq'), 'Typhlosion', 'Aïe ça brule', 2, 190, 3407.567, 'path',2, 2),
-        (nextval('card_id_seq'), 'MewTwo', 'Grille ta master ball pour le chopper (ou ton porte monnaie)', 80, 230, 34999907.567, 'path',4, 4);
+        (nextval('card_id_seq'), 'MewTwo', 'Grille ta master ball pour le chopper (ou ton porte monnaie)', 80, 230, 34999907.567, 'path',4, 4),
+        (nextval('card_id_seq'), 'Tadmorv', 'Des glaires', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Krabby', 'Avec ses deux grosses pinces (¬‿¬)', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Abo', 'en  vrai c juste un serpent', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Lamantine', 'Trop chou petite otarie', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Dracolosse', 'Stylé en vrai', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Pikachu', 'Surcôté de ouf en vrai, le truc est juste une souris', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Magicarpe', 'Attaque trempette mais on apprécie quand même', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Kangourex', 'Comme un vrai kangourou il te défonce', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Noeunoeuf', 'Les oeufs les plus dangereux que tu rencontreras', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Ponyta', 'Il a le feu au cul pour ça qu il court aussi vite', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Rattatac', 'Venere le rat, pickle rick aurait rien pu faire là', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Ronflex', 'Sleep, Sleep, Sleep, Repeat', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Tortank', 'Une tortue tank, incroyable', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Tygnon', 'Logan Paul aurait pas tenu un round', 2, 190, 3407.567, 'path',2, 2),
+        (nextval('card_id_seq'), 'Smogogo', 'Toujours moins dangereux que de péter dans un ascenceur', 2, 190, 3407.567, 'path',2, 2);
 
 
 
