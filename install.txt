@@ -1,0 +1,15 @@
+Si vous voulez test le code, il faut
+Install docker
+Récupérer l'image postgres
+Récupérer l'image dgpage/pgadmin4
+
+Ajouter via pgadmin, les database suivantes : 
+postgres_user
+postgres_card
+postgres_market
+postgres_room
+
+Ensuite, si vous êtes en localhost, regarder pour les fichiers de config java, application.properties
+
+Npm run start sur le front Angular
+Puis lancer chaque microservice un par un
