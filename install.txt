@@ -13,6 +13,8 @@ postgres_card
 postgres_market
 postgres_room
 
+faire les insert du ficher cardScriptDB dans chaque base
+
 Ensuite, si vous êtes en localhost, regarder pour les fichiers de config java, application.properties
 
 Npm run start sur le front Angular
