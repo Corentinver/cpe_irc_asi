@@ -12,6 +12,12 @@ import pojo.user.User;
 import repository.CardRepository;
 import rest.UserRest;
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Class Service Card utilisant la class jpa pour récupérer des cartes.
+ * Ajout des cartes par l'outil de Postgres Sql, pas d'ajout via l'application
+ */
 @Service
 public class CardService {
 	

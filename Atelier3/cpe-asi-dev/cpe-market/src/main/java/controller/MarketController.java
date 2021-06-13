@@ -11,6 +11,11 @@ import rest.MarketRest;
 import service.MarketService;
 
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Implementation des fonctions des url du controller Market
+ */
 @CrossOrigin
 @RestController
 public class MarketController implements MarketRest {

@@ -16,6 +16,11 @@ import rest.UserRest;
 import service.UserService;
 import utils.MapStructMapperImpl;
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Implementation des fonctions des url du controller User
+ */
 @CrossOrigin
 @RestController
 public class UserController implements UserRest {
@@ -25,19 +30,38 @@ public class UserController implements UserRest {
 	
 	private MapStructMapperImpl mapper = new MapStructMapperImpl();
 
+	/**
+	 * Ajout d'argent lors d'une vente d'une carte par un utilisateur
+	 * Fonction appelé depuis le service market
+	 * @param userId Identifiant d'un utilisateur, amont Montant d'argent à ajouter
+	 * @return Double montant 
+	 */
 	@Override
 	public ResponseEntity<Double> addMoney(Integer userId, double amount) {
 		return new ResponseEntity<Double>(userService.addMoney(userId, amount), HttpStatus.OK);
 	}
 
+	/**
+	 * Retrait d'argent lors d'un achat d'une carte par un utilisateur
+	 * Fonction appelé depuis le service market
+	 * @param userId Identifiant d'un utilisateur, amont Montant d'argent à enlever
+	 * @return Double montant 
+	 */
 	@Override
 	public ResponseEntity<Double> removeMoney(Integer userId, double amount) {
 		return new ResponseEntity<Double>(userService.removeMoney(userId, amount), HttpStatus.OK);
 	}
 
+	/**
+	 * Ajout de la carte lors d'un achat par un utilisateur
+	 * Fonction appelé depuis le service market
+	 * @param userId Identifiant d'un utilisateur, cardId carte à ajouter à un utilisateur
+	 * @return HttpStatus carte acheté 
+	 */
 	@Override
 	public ResponseEntity<HttpStatus> addCard(Integer userId, Integer cardId) {
 		boolean result = userService.addCard(userId, cardId);
+		// Renvoi carte acheté ok sinon erreur interne server
 		if(result) {
 			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 		}
@@ -46,6 +70,12 @@ public class UserController implements UserRest {
 		}
 	}
 
+	/**
+	 * Retrait de la carte lors d'une vente par un utilisateur
+	 * Fonction appelé depuis le service market
+	 * @param userId Identifiant d'un utilisateur, cardId carte à enlever à un utilisateur
+	 * @return HttpStatus carte vendue 
+	 */
 	@Override
 	public ResponseEntity<HttpStatus> removeCard(Integer userId, Integer cardId) {
 		boolean result = userService.removeCard(userId, cardId);
@@ -57,6 +87,12 @@ public class UserController implements UserRest {
 		}
 	}
 
+	/**
+	 * Recupération des informations d'un utilisateur avec son identifiant
+	 * Fonction appelé par l'application interne
+	 * @param userId
+	 * @return User
+	 */
 	@Override
 	public ResponseEntity<User> getUserById(Integer userId) {
 		User user = userService.findById(userId);
@@ -67,10 +103,18 @@ public class UserController implements UserRest {
 		}
 	}
 
+	/**
+	 * Enregistrement d'un utilisateur depuis le formulaire côté client
+	 * @param userPostDTO informations envoyés par l'utilisateur saisi dans le formulaire d'enregistrement
+	 * @return UserGetDTO informations utilisateur côté client
+	 */
 	@Override
 	public ResponseEntity<UserGetDTO> createUser(UserPostDTO userPostDTO) {
+		// Conversion d'un user
 		User user = mapper.userPostDTOtoUser(userPostDTO);
+		// Enregistrement de l'utilisateur
 		User userCreated = userService.createUser(user);
+		// Renvoi de l'utilsateur vers le côté client sinon renvoi error interne server
 		if (userCreated != null) {
 			return new ResponseEntity<UserGetDTO>(mapper.userToUserGetDTO(userCreated), HttpStatus.OK);
 		} else {

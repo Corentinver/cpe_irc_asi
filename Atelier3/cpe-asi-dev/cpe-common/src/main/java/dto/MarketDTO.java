@@ -2,6 +2,12 @@ package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author Myniz
+ * Class DTO Market pour la demande d'un achat
+ * Utiliser dans le transfer de la donnée du côté client vers le côté serveur API
+ */
 public class MarketDTO {
 	@JsonProperty("id")
 	private int id;

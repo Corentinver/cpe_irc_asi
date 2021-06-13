@@ -3,6 +3,13 @@ package dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+
+/**
+ * 
+ * @author Myniz
+ * Class DTO UserGet pour la récupération des information de l'utilisateur côté client.
+ * Utiliser dans le transfer de la donnée du côté serveur API vers le côté client
+ */
 public class UserGetDTO {
 	
 	@JsonProperty("id")

@@ -20,6 +20,11 @@ import utils.MapStructMapperImpl;
 
 import java.util.Optional;
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Class Service User utilisant la class jpa pour récupérer et ajouter un utilisateur.
+ */
 @Service
 public class UserService{
 

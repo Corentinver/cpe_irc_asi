@@ -10,10 +10,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Class Entité Card
+ * Elle est contenu dans le package pojo.card car cela permet au chargement de ce package, de ne créer uniquement que les tables necessaires au microservice Card.
+ * Représente la table Card dans notre shéma de base de données. 
+ * Elle permet la création grâce à Hibernate d'une table portant le nom de la classe et avec les attributs de celle-ci.
+ */
 @Entity(name="Card")
 @Table(name="Card")
 public class Card {
 	
+	
+	// Correspond à l'identifiant de la table Card
+	// L'annotation GeneratedValue va être quelle strategie de génération d'identifiant nous souhaitons mettre en place
+	// Nous avons adopté une séquence par table.
+	// Ce qui permet de gérer un identifiant qui va s'incrementer à chaque ajout dans chaque table.
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType. IDENTITY)
@@ -37,9 +50,20 @@ public class Card {
 	@Column(name="path")
 	private String path;
 	
+	// L'annotation OneToOne permet de lier deux classe entité grâce aux identifiants de deux table différentes
+	// Lors du retour d'une carte vers la partie client, nous pourrons directement récupérer les informations de sa famille
+	// Hibernate s'occupera de faire la liaison
+	// Sans cela, une requête de Jointure aurait du être spécifier au moment de la récupération d'une carte pour récupérer les informations de sa famille.
+	
 	@OneToOne(cascade = { CascadeType.ALL})
 	@JoinColumn(name = "family_id", referencedColumnName = "id")
 	private Family family;
+	
+	
+	// L'annotation OneToOne permet de lier deux classe entité grâce aux identifiants de deux table différentes
+	// Lors du retour d'une carte vers la partie client, nous pourrons directement récupérer les informations de son affinité
+	// Hibernate s'occupera de faire la liaison
+	// Sans cela, une requête de Jointure aurait du être spécifier au moment de la récupération d'une carte pour récupérer les informations de son affinité.
 	
 	@OneToOne(cascade = { CascadeType.ALL})
 	@JoinColumn(name = "affinity_id", referencedColumnName = "id")

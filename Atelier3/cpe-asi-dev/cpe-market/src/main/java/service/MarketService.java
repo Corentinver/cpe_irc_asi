@@ -9,6 +9,12 @@ import pojo.card.Card;
 import rest.UserRest;
 import rest.CardRest;
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Class Service Market utilisant la class jpa pour récupérer des cartes.
+ * Ajout des cartes par l'outil de Postgres Sql, pas d'ajout via l'application
+ */
 @Service
 public class MarketService {
 	

@@ -13,6 +13,11 @@ import rest.LoginRest;
 import service.UserService;
 import utils.MapStructMapperImpl;
 
+/**
+ * 
+ * @author Gouy Quentin
+ * Implementation des fonctions des url du controller Login
+ */
 @CrossOrigin
 @RestController
 public class LoginController implements LoginRest{
@@ -22,9 +27,15 @@ public class LoginController implements LoginRest{
 	
 	private MapStructMapperImpl mapper = new MapStructMapperImpl();
 	
+	/**
+	 * Login d'un utilisateur et récupération de ces informations côté client
+	 * @param userLogin
+	 * @return UserGetDTO information utilisateur côté client 
+	 */
 	@Override
 	public ResponseEntity<UserGetDTO> login(UserLoginDTO userLogin) {
 		User user = userService.login(userLogin);
+		// renvoie l'utilisateur sinon erreur non trouvé
 		if (user != null) {
 			return new ResponseEntity<UserGetDTO>(mapper.userToUserGetDTO(user), HttpStatus.OK);
 		} else {
@@ -32,6 +43,10 @@ public class LoginController implements LoginRest{
 		}
 	}
 
+	/**
+	 * Deconnexion d'un utilisateur
+	 * @return HttpStatus si déconnecté 
+	 */
 	@Override
 	public ResponseEntity<HttpStatus> logout() {
 		return new ResponseEntity<>(HttpStatus.OK);
