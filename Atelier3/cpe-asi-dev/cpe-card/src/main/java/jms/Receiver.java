@@ -22,7 +22,7 @@ public class Receiver {
 		cardService.getCollectionCardsByUser(userId).forEach(card -> {
 				System.out.println(card.getName());
 		});
-		this.template.convertAndSend("/socket/" + userId + "/shopCard", cardService.getCollectionCardsByUser(userId));
+		this.template.convertAndSend("/socket/" + userId + "/collectionCard", cardService.getCollectionCardsByUser(userId));
     }
 
     @JmsListener(destination = "queue.card.shop")

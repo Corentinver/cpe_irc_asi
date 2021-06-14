@@ -17,6 +17,6 @@ export class CardCollectionWebSocketService extends WebSocketService {
   constructor(
     stompService: RxStompService, 
     private authentificationService: AuthentificationService) {
-    super(stompService, progressStompConfig, new WebSocketOptions([`/socket/${authentificationService.currentUser.id}/shopCard`, ]));
+    super(stompService, progressStompConfig, new WebSocketOptions([`/socket/${authentificationService.currentUser.id}/collectionCard`, ]));
   }
 }
