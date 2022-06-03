@@ -28,7 +28,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 	 * @return Transactions
 	 */
     @Query(" select * from Transactions " +
-            " where userId = ?1")
+            " where userId = ?1 order by transacDate desc")
     Optional<List<Transaction>>  getTransactionsByUser(int userId);
     
 	/**
