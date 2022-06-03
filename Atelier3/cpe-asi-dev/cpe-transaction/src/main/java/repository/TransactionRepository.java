@@ -23,7 +23,7 @@ import pojo.user.User;
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 	
 	/**
-	 * Recherche d'un des transactions d'un utilisateur
+	 * Recherche des transactions d'un utilisateur
 	 * @param userId
 	 * @return Transactions
 	 */

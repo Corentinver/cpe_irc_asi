@@ -33,7 +33,7 @@ public interface TransactionRest {
     ResponseEntity<List<Transaction>> getTransactionsByUser(@RequestBody int userId);
     
 	/**
-	 * Ajout d'une transaction transactions pour un User
+	 * Ajout d'une transaction
 	 * @param market
 	 * @return Ok ou non 
 	 */
