@@ -1,4 +1,4 @@
-package pojo;
+/*package pojo;
 
 import static org.junit.Assert.assertTrue;
 
@@ -22,4 +22,4 @@ public class FamilyTest {
 		assertTrue(family.getName() == "test-NameBis");
 	}
 
-}
+}*/

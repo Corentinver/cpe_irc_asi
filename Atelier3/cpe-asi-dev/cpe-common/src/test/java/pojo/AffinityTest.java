@@ -1,4 +1,4 @@
-package pojo;
+/*package pojo;
 
 import static org.junit.Assert.assertTrue;
 
@@ -22,3 +22,4 @@ public class AffinityTest {
 		assertTrue(affinity.getName() == "test-NameBis");
 	}
 }
+*/

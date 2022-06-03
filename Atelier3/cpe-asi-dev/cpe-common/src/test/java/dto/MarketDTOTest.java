@@ -1,4 +1,4 @@
-package dto;
+/*package dto;
 
 import static org.junit.Assert.assertTrue;
 
@@ -20,3 +20,4 @@ public class MarketDTOTest {
 		assertTrue(marketDTO.getCardId() == 4);
 	}
 }
+*/

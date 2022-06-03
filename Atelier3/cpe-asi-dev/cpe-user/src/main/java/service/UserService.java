@@ -38,10 +38,10 @@ public class UserService{
 		
     	List<Card> allCards = Arrays.asList(restTemplate.getForObject(url, Card[].class));
     	List<Card> randomCards = new ArrayList<Card>();
-    	for(int i = 0; i < 5; i++) {
+    	/*for(int i = 0; i < 5; i++) {
     		int randomInt = ThreadLocalRandom.current().nextInt(0, allCards.size());
     		userInfo.addCard(allCards.get(randomInt).getId());
-    	}
+    	}*/
     	
     	return userRepository.save(userInfo);
     }

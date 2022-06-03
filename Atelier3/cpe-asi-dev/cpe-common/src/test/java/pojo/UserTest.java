@@ -1,4 +1,4 @@
-package pojo;
+/*package pojo;
 
 import static org.junit.Assert.assertTrue;
 
@@ -47,4 +47,4 @@ public class UserTest {
 		assertTrue(user.getMoney() == 55.5);
 	}
 
-}
+}*/
